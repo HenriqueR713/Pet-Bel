@@ -1,0 +1,111 @@
+@font-face {
+  font-family: 'Chewy';
+  src: url('assets/fonts/Chewy-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+.hero {
+  position: relative;
+  width: 100%;
+  max-width: 1130px;
+  max-height: 610px;
+  margin: 0 auto;
+  aspect-ratio: 1414 / 610;
+  overflow: hidden;
+  border-radius: 0 0 24px 24px;
+  container-type: inline-size;
+}
+
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: top center;
+  z-index: 0;
+}
+
+.hero-content {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  color: #4a2e00;
+}
+
+/* --- Selo/logo central --- */
+.logo-selo {
+  position: absolute;
+  left: 49.9%;
+  top: 40.2%;
+  width: 22.3%;
+  aspect-ratio: 1 / 1;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  object-fit: contain;
+  
+}
+
+/* --- "PET" e "BEL" (efeito vazado) --- */
+.brand-text {
+  position: absolute;
+  top: 40.5%;
+  transform: translate(-50%, -50%);
+  display: inline-block;
+  z-index: 2;
+}
+
+.brand-pet {
+  left: 23%;
+}
+
+.brand-bel {
+  left: 77.6%;
+}
+
+.camada-tras,
+.camada-frente {
+  font-family: 'Chewy', system-ui, sans-serif;
+  font-size: 19cqw;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.camada-tras {
+  position: absolute;
+  inset: 0;
+  color: #ff2ea6;
+  transform: translate(0.04em, 0.04em); /* equivalente ao deslocamento de 3px */
+  z-index: 0;
+}
+
+.camada-frente {
+  position: relative;
+  color: transparent;
+  -webkit-text-stroke: 0.03em #000;
+  z-index: 1;
+}
+
+
+@media (max-width: 600px) {
+  .camada-tras,
+  .camada-frente {
+    font-size: 17cqw;
+  }
+  .tagline {
+    font-size: 3vw;
+    white-space: normal;
+  }
+}
