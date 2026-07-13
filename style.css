@@ -58,6 +58,8 @@ body {
   
 }
 
+
+
 /* --- "PET" e "BEL" (efeito vazado) --- */
 .brand-text {
   position: absolute;
@@ -86,7 +88,7 @@ body {
 .camada-tras {
   position: absolute;
   inset: 0;
-  color: #ff2ea6;
+  color: #FF197B;
   transform: translate(0.04em, 0.04em); /* equivalente ao deslocamento de 3px */
   z-index: 0;
 }
