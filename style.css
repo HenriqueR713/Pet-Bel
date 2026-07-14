@@ -5,6 +5,13 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Fredoka';
+  src: url('assets/fonts/Fredoka-VariableFont_wdth\,wght.ttf') format('truetype');
+  font-weight: 300 700;
+  font-style: normal;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -13,7 +20,19 @@
 
 body {
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background-color: white; /* fundo neutro da página — as seções coloridas viram "cards" por cima dele */
 }
+
+/* VARIAVEIS */
+:root {
+  --pink: #FF197B;
+  --yellow-primaria: #FFF701;
+  --yellow-secundaria: #FFD800;
+}
+
+/* ==========================================================================
+   HERO
+   ========================================================================== */
 
 .hero {
   position: relative;
@@ -38,13 +57,6 @@ body {
   z-index: 0;
 }
 
-.hero-content {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  color: #4a2e00;
-}
-
 /* --- Selo/logo central --- */
 .logo-selo {
   position: absolute;
@@ -55,10 +67,7 @@ body {
   transform: translate(-50%, -50%);
   z-index: 2;
   object-fit: contain;
-  
 }
-
-
 
 /* --- "PET" e "BEL" (efeito vazado) --- */
 .brand-text {
@@ -88,7 +97,7 @@ body {
 .camada-tras {
   position: absolute;
   inset: 0;
-  color: #FF197B;
+  color: var(--pink);
   transform: translate(0.04em, 0.04em); /* equivalente ao deslocamento de 3px */
   z-index: 0;
 }
@@ -100,7 +109,6 @@ body {
   z-index: 1;
 }
 
-
 @media (max-width: 600px) {
   .camada-tras,
   .camada-frente {
@@ -109,5 +117,287 @@ body {
   .tagline {
     font-size: 3vw;
     white-space: normal;
+  }
+}
+
+/* ==========================================================================
+   BANHO E TOSA — fonte Fredoka aplicada SÓ nesta seção (herdada pelos
+   filhos); o título continua em Chewy porque tem sua própria regra.
+   ========================================================================== */
+
+.banho-tosa {
+  position: relative;
+  width: 100%;
+  max-width: 1130px;
+  margin: 32px auto;
+  background-color: var(--yellow-primaria);
+  overflow: hidden;
+  border-radius: 28px;
+  border: 4px solid var(--pink);
+  padding: 56px 6%;
+  container-type: inline-size;
+  font-family: 'Fredoka', system-ui, sans-serif;
+}
+
+@media (max-width: 700px) {
+  .banho-tosa {
+    margin: 20px auto;
+    border-radius: 22px;
+    width: calc(100% - 32px);
+  }
+}
+
+/* ---------- Círculos decorativos (fundo) ---------- */
+.banho-tosa__circulos {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.banho-tosa__circulo {
+  position: absolute;
+  border-radius: 50%;
+  background-color: var(--yellow-secundaria);
+}
+
+.banho-tosa__circulo--1 {
+  width: 60cqw;
+  aspect-ratio: 1 / 1;
+  top: -26%;
+  left: -16%;
+}
+
+.banho-tosa__circulo--2 {
+  width: 40cqw;
+  aspect-ratio: 1 / 1;
+  bottom: -20%;
+  left: 20%;
+}
+
+.banho-tosa__circulo--3 {
+  width: 34cqw;
+  aspect-ratio: 1 / 1;
+  top: 4%;
+  right: -14%;
+}
+
+.banho-tosa__circulo--4 {
+  width: 22cqw;
+  aspect-ratio: 1 / 1;
+  bottom: 6%;
+  right: 14%;
+}
+
+
+
+@media (max-width: 700px) {
+  .banho-tosa__circulo--1 {
+    width: 95cqw;
+    top: -15%;
+    left: -30%;
+  }
+
+  .banho-tosa__circulo--2 {
+    width: 70cqw;
+    bottom: -10%;
+    left: 10%;
+  }
+
+  .banho-tosa__circulo--3 {
+    width: 60cqw;
+    top: 2%;
+    right: -22%;
+  }
+
+  .banho-tosa__circulo--4 {
+    width: 40cqw;
+    bottom: 18%;
+    right: 4%;
+  }
+}
+
+
+
+/* bolhas de sabão flutuando, geradas via JS (.banho-tosa__bolha) */
+.banho-tosa__bolha {
+  position: absolute;
+  bottom: -10%;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.35);
+  border: 2px solid rgba(255, 255, 255, 0.55);
+  pointer-events: none;
+  animation: subir linear infinite;
+  z-index: 1;
+}
+
+@keyframes subir {
+  from { transform: translateY(0) translateX(0); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  to   { transform: translateY(-620px) translateX(var(--drift, 20px)); opacity: 0; }
+}
+
+.banho-tosa__wrap {
+  position: relative;
+  z-index: 2;
+  max-width: 1130px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: 24px;
+}
+
+/* ---------- Coluna de texto ---------- */
+.banho-tosa__titulo {
+  font-family: 'Fredoka', system-ui, sans-serif;
+  color: var(--pink);
+  font-size: clamp(34px, 6cqw, 56px);
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+.banho-tosa__frase {
+  margin-bottom: 22px;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.6s ease 0.15s, transform 0.6s ease 0.15s;
+}
+
+.banho-tosa__frase.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.banho-tosa__frase-destaque {
+  display: inline;
+  font-family: 'Fredoka', system-ui, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: clamp(14px, 2.2cqw, 19px);
+  line-height: 1.9; /* cria a folga entre as caixinhas de cada linha */
+  color: #fff;
+  background-color: var(--pink);
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  padding: 3px 12px;
+ 
+}
+
+
+.banho-tosa__lista {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.banho-tosa__item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 700;
+  font-size: clamp(15px, 2.1cqw, 20px);
+  color: #1a1a1a;
+  opacity: 0;
+  transform: translateX(-14px);
+  transition: opacity 0.5s ease, transform 0.5s ease, padding-left 0.2s ease;
+  cursor: default;
+}
+
+.banho-tosa__item::before {
+  content: '';
+  flex: 0 0 auto;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--pink);
+  transition: transform 0.2s ease;
+}
+
+.banho-tosa__item:hover {
+  padding-left: 6px;
+}
+
+.banho-tosa__item:hover::before {
+  transform: scale(1.35);
+}
+
+/* item aparece quando ganha a classe .in-view (via JS/IntersectionObserver) */
+.banho-tosa__item.in-view {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ---------- Coluna de imagem ---------- */
+.banho-tosa__imagem {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  min-height: 340px;
+}
+
+.banho-tosa__foto {
+  position: relative;
+  z-index: 2;
+  width: 86%;
+  aspect-ratio: 4 / 5;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: repeating-linear-gradient(
+    45deg, rgba(0,0,0,0.06), rgba(0,0,0,0.06) 10px,
+    transparent 10px, transparent 20px
+  );
+  border: 3px dashed rgba(0,0,0,0.35);
+  color: #1a1a1a;
+  font-weight: 700;
+  text-align: center;
+  padding: 16px;
+  transition: transform 0.35s ease;
+}
+
+.banho-tosa__foto:hover {
+  transform: translateY(-6px);
+}
+
+.banho-tosa__foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: none; /* remova esta linha quando inserir a imagem real via <img> */
+}
+
+/* legenda de placeholder — apagar quando a foto real entrar */
+.banho-tosa__foto-legenda {
+  font-size: 13px;
+  opacity: 0.7;
+}
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 860px) {
+  .banho-tosa__wrap {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .banho-tosa__imagem {
+    order: -1;
+    min-height: 260px;
+    margin-bottom: 8px;
+  }
+
+  .banho-tosa {
+    padding: 40px 6%;
+  }
+}
+
+@media (max-width: 480px) {
+  .banho-tosa__item {
+    font-size: 16px;
   }
 }
