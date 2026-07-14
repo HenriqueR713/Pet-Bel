@@ -219,7 +219,7 @@ body {
 
 
 
-/* bolhas de sabão flutuando, geradas via JS (.banho-tosa__bolha) */
+/* bolhas de sabão flutuando, geradas via JS (.banho-tosa__bolha) 
 .banho-tosa__bolha {
   position: absolute;
   bottom: -10%;
@@ -237,6 +237,8 @@ body {
   90%  { opacity: 1; }
   to   { transform: translateY(-620px) translateX(var(--drift, 20px)); opacity: 0; }
 }
+
+*/
 
 .banho-tosa__wrap {
   position: relative;

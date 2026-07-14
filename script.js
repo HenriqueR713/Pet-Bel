@@ -39,6 +39,8 @@
     alvos.forEach((el) => observer.observe(el));
   }
 
+
+  /*
   // ---------- 2) Bolhas de sabão ----------
   if (!prefersReducedMotion) {
     const totalBolhas = 10;
@@ -62,7 +64,7 @@
       secao.appendChild(bolha);
     }
   }
-
+*/
   // ---------- 3) Preparado para o SVG da patinha (uso futuro) ----------
   // Quando você tiver o SVG da patinha, basta soltar um <img> ou <svg>
   // dentro de .banho-tosa__foto (substituindo o placeholder tracejado)
