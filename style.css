@@ -34,27 +34,11 @@ body {
     #FFB6D9 80px
   );
   */
-  background-color: #FFB2D3;
+  background-color: #ff72af;
   
 }
 
-body::before {
-  content: '';
-  position: absolute; /* era fixed — o fixed "tremia" no mobile porque a barra de endereço do navegador
-                          muda de altura durante o scroll, recalculando a viewport a cada frame.
-                          Com absolute, o elemento fica preso ao body (documento) e rola junto com a
-                          página normalmente, sem esse recálculo constante. */
-  inset: -100px;
-  z-index: -1;
-  background-image: repeating-linear-gradient(
-    45deg,
-    #FF80B6 0px,
-    #FF80B6 58px,
-    #FFB2D3 58px,
-    #FFB2D3 116px
-  );
-  filter: blur(12px);
-}
+
 
 /* VARIAVEIS */
 :root {
