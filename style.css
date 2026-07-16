@@ -18,9 +18,42 @@
   box-sizing: border-box;
 }
 
+html, body {
+  height: 100%;
+}
+
 body {
+  position: relative; /* necessário para o body::before (position: absolute) se posicionar em relação ao body */
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   background-color: white; /* fundo neutro da página — as seções coloridas viram "cards" por cima dele */
+  /* background-image: repeating-linear-gradient(
+    45deg,
+    #FF8FC0 0px,
+    #FF8FC0 40px,
+    #FFB6D9 40px,
+    #FFB6D9 80px
+  );
+  */
+  background-color: #FFB2D3;
+  
+}
+
+body::before {
+  content: '';
+  position: absolute; /* era fixed — o fixed "tremia" no mobile porque a barra de endereço do navegador
+                          muda de altura durante o scroll, recalculando a viewport a cada frame.
+                          Com absolute, o elemento fica preso ao body (documento) e rola junto com a
+                          página normalmente, sem esse recálculo constante. */
+  inset: -100px;
+  z-index: -1;
+  background-image: repeating-linear-gradient(
+    45deg,
+    #FF80B6 0px,
+    #FF80B6 58px,
+    #FFB2D3 58px,
+    #FFB2D3 116px
+  );
+  filter: blur(12px);
 }
 
 /* VARIAVEIS */
@@ -28,6 +61,9 @@ body {
   --pink: #FF197B;
   --yellow-primaria: #FFF701;
   --yellow-secundaria: #FFD800;
+
+   --espaco-secao: 84px;        /* espaço padrão entre seções (desktop) */
+  --espaco-secao-mobile: 64px; /* espaço padrão entre seções (mobile) */
 }
 
 /* ==========================================================================
@@ -38,11 +74,10 @@ body {
   position: relative;
   width: 100%;
   max-width: 1130px;
-  max-height: 610px;
+  max-height: 750px;
   margin: 0 auto;
-  aspect-ratio: 1414 / 610;
+  aspect-ratio: 1414 / 750;
   overflow: hidden;
-  border-radius: 0 0 24px 24px;
   container-type: inline-size;
 }
 
@@ -55,13 +90,14 @@ body {
   object-fit: contain;
   object-position: top center;
   z-index: 0;
+  filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.25));
 }
 
 /* --- Selo/logo central --- */
 .logo-selo {
   position: absolute;
   left: 49.9%;
-  top: 40.2%;
+  top: 34%;
   width: 22.3%;
   aspect-ratio: 1 / 1;
   transform: translate(-50%, -50%);
@@ -72,7 +108,7 @@ body {
 /* --- "PET" e "BEL" (efeito vazado) --- */
 .brand-text {
   position: absolute;
-  top: 40.5%;
+  top: 34%;
   transform: translate(-50%, -50%);
   display: inline-block;
   z-index: 2;
@@ -112,12 +148,19 @@ body {
 @media (max-width: 600px) {
   .camada-tras,
   .camada-frente {
-    font-size: 17cqw;
+    font-size: 22cqw;
   }
   .tagline {
     font-size: 3vw;
     white-space: normal;
   }
+
+  .logo-selo {
+    width: 28%; /* era 22.3% no desktop — aumenta a logo no mobile */
+  }
+
+  .brand-pet { left: 18%; }  /* era 20% — empurra mais pra esquerda */
+  .brand-bel { left: 82%; }  /* era 80% — empurra mais pra direita */
 }
 
 /* ==========================================================================
@@ -129,10 +172,10 @@ body {
   position: relative;
   width: 100%;
   max-width: 1130px;
-  margin: 32px auto;
+  margin: var(--espaco-secao) auto;
   background-color: var(--yellow-primaria);
   overflow: hidden;
-  border-radius: 28px;
+  border-radius: 35px;
   border: 4px solid var(--pink);
   padding: 56px 6%;
   container-type: inline-size;
@@ -141,8 +184,8 @@ body {
 
 @media (max-width: 700px) {
   .banho-tosa {
-    margin: 20px auto;
-    border-radius: 22px;
+    margin:var(--espaco-secao-mobile) auto;
+    border-radius: 35px;
     width: calc(100% - 32px);
   }
 }
@@ -255,7 +298,7 @@ body {
 .banho-tosa__titulo {
   font-family: 'Fredoka', system-ui, sans-serif;
   color: var(--pink);
-  font-size: clamp(34px, 6cqw, 56px);
+  font-size: clamp(38px, 8cqw, 62px);
   line-height: 1;
   margin-bottom: 10px;
 }
@@ -277,7 +320,7 @@ body {
   font-family: 'Fredoka', system-ui, sans-serif;
   font-weight: 700;
   text-transform: uppercase;
-  font-size: clamp(14px, 2.2cqw, 19px);
+  font-size: clamp(17px, 3cqw, 24px);
   line-height: 1.9; /* cria a folga entre as caixinhas de cada linha */
   color: #fff;
   background-color: var(--pink);
@@ -300,7 +343,7 @@ body {
   align-items: center;
   gap: 12px;
   font-weight: 700;
-  font-size: clamp(15px, 2.1cqw, 20px);
+  font-size: clamp(18px, 2.8cqw, 24px);
   color: #1a1a1a;
   opacity: 0;
   transform: translateX(-14px);
@@ -400,6 +443,6 @@ body {
 
 @media (max-width: 480px) {
   .banho-tosa__item {
-    font-size: 16px;
+    font-size: 19px;
   }
 }
