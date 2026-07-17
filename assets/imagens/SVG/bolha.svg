@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+  <!-- anel externo: agora é um círculo com stroke, mesma espessura do brilho -->
+  <circle
+    cx="300"
+    cy="300"
+    r="260"
+    fill="none"
+    stroke="#000000"
+    stroke-width="26"
+  />
+
+  <!-- brilho: traço curvo -->
+  <path
+    fill="none"
+    stroke="#000000"
+    stroke-width="26"
+    stroke-linecap="round"
+    d="M 358,109 C 398,131 434,166 461,207"
+  />
+
+  <!-- brilho: pequeno traço em forma de gota -->
+  <ellipse
+    cx="474"
+    cy="277"
+    rx="11"
+    ry="23"
+    transform="rotate(-18 474 277)"
+    fill="#000000"
+  />
+</svg>

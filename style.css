@@ -25,17 +25,8 @@ html, body {
 body {
   position: relative; /* necessário para o body::before (position: absolute) se posicionar em relação ao body */
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  background-color: white; /* fundo neutro da página — as seções coloridas viram "cards" por cima dele */
-  /* background-image: repeating-linear-gradient(
-    45deg,
-    #FF8FC0 0px,
-    #FF8FC0 40px,
-    #FFB6D9 40px,
-    #FFB6D9 80px
-  );
-  */
-  background-color: #ff72af;
-  
+  background-color: rgb(0, 0, 0); 
+
 }
 
 
@@ -45,6 +36,8 @@ body {
   --pink: #FF197B;
   --yellow-primaria: #FFF701;
   --yellow-secundaria: #FFD800;
+   --rosa-base: #ff72af;
+  --rosa-bolha: #ff8fc0;
 
    --espaco-secao: 84px;        /* espaço padrão entre seções (desktop) */
   --espaco-secao-mobile: 64px; /* espaço padrão entre seções (mobile) */
@@ -148,8 +141,7 @@ body {
 }
 
 /* ==========================================================================
-   BANHO E TOSA — fonte Fredoka aplicada SÓ nesta seção (herdada pelos
-   filhos); o título continua em Chewy porque tem sua própria regra.
+                          BANHO E TOSA 
    ========================================================================== */
 
 .banho-tosa {
@@ -161,7 +153,7 @@ body {
   overflow: hidden;
   border-radius: 35px;
   border: 4px solid var(--pink);
-  padding: 56px 6%;
+  padding: 56px 6% ;
   container-type: inline-size;
   font-family: 'Fredoka', system-ui, sans-serif;
 }
@@ -171,6 +163,7 @@ body {
     margin:var(--espaco-secao-mobile) auto;
     border-radius: 35px;
     width: calc(100% - 32px);
+    padding-bottom: 10px;
   }
 }
 
@@ -245,27 +238,62 @@ body {
 }
 
 
-
-/* bolhas de sabão flutuando, geradas via JS (.banho-tosa__bolha) 
+/* ---------- Bolhas estáticas decorativas (fundo) ---------- */
 .banho-tosa__bolha {
   position: absolute;
-  bottom: -10%;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.35);
-  border: 2px solid rgba(255, 255, 255, 0.55);
-  pointer-events: none;
-  animation: subir linear infinite;
-  z-index: 1;
+  aspect-ratio: 1 / 1;
+  background-color: var(--yellow-secundaria);
+
+  /* usa o SVG como máscara — quem pinta é o background-color acima */
+  -webkit-mask-image: url('assets/imagens/SVG/bolha.svg');
+  mask-image: url('assets/imagens/SVG/bolha.svg');
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-position: center;
+  mask-position: center;
 }
 
-@keyframes subir {
-  from { transform: translateY(0) translateX(0); opacity: 0; }
-  10%  { opacity: 1; }
-  90%  { opacity: 1; }
-  to   { transform: translateY(-620px) translateX(var(--drift, 20px)); opacity: 0; }
-}
+.banho-tosa__bolha--1  { width: 60px;  top: 6%;  left: 4%; }
+.banho-tosa__bolha--2  { width: 22px;  top: 16%; left: 20%; }
+.banho-tosa__bolha--3  { width: 95px;  top: 62%; left: 2%; }
+.banho-tosa__bolha--4  { width: 38px;  top: 38%; right: 6%; }
+.banho-tosa__bolha--5  { width: 18px;  top: 80%; right: 22%; }
+.banho-tosa__bolha--6  { width: 70px;  top: 8%;  right: 12%; }
+.banho-tosa__bolha--7  { width: 28px;  top: 48%; left: 34%; }
+.banho-tosa__bolha--8  { width: 50px;  top: 4%;  left: 42%; }
+.banho-tosa__bolha--9  { width: 16px;  top: 30%; left: 12%; }
+.banho-tosa__bolha--10 { width: 44px;  top: 70%; right: 4%; }
+.banho-tosa__bolha--11 { width: 24px;  top: 90%; left: 30%; }
+.banho-tosa__bolha--12 { width: 80px;  top: 56%; right: 30%; }
+.banho-tosa__bolha--13 { width: 32px;  top: 20%; right: 32%; }
+.banho-tosa__bolha--14 { width: 20px;  top: 84%; left: 8%; }
+.banho-tosa__bolha--15 { width: 26px; top: 55%; left: 6%; }
+.banho-tosa__bolha--16 { width: 46px; top: 68%; right: 6%; }
+.banho-tosa__bolha--17 { width: 18px; top: 76%; left: 40%; }
+.banho-tosa__bolha--18 { width: 34px; top: 92%; right: 20%; }
 
-*/
+@media (max-width: 700px) {
+  .banho-tosa__bolha--1  { width: 54px; }
+  .banho-tosa__bolha--2  { width: 26px; }
+  .banho-tosa__bolha--3  { width: 90px; }
+  .banho-tosa__bolha--4  { width: 40px; }
+  .banho-tosa__bolha--5  { width: 20px; }
+  .banho-tosa__bolha--6  { width: 60px; }
+  .banho-tosa__bolha--7  { width: 30px; }
+  .banho-tosa__bolha--8  { width: 46px; }
+  .banho-tosa__bolha--9  { width: 18px; }
+  .banho-tosa__bolha--10 { width: 42px; }
+  .banho-tosa__bolha--11 { width: 24px; }
+  .banho-tosa__bolha--12 { width: 70px; }
+  .banho-tosa__bolha--13 { width: 30px; }
+  .banho-tosa__bolha--14 { width: 20px; }
+  .banho-tosa__bolha--15 { width: 22px; }
+  .banho-tosa__bolha--16 { width: 40px; }
+  .banho-tosa__bolha--17 { width: 16px; }
+  .banho-tosa__bolha--18 { width: 30px; }
+}
 
 .banho-tosa__wrap {
   position: relative;
@@ -422,11 +450,221 @@ body {
 
   .banho-tosa {
     padding: 40px 6%;
+   
+    padding-bottom: 20 px; /* adicione aqui também */
   }
-}
+
+  }
+
 
 @media (max-width: 480px) {
   .banho-tosa__item {
     font-size: 19px;
   }
+}
+
+/* ==========================================================================
+   CLÍNICA — mesmo padrão do Banho e Tosa, com cores invertidas
+   (card rosa / detalhes amarelos) e imagem à esquerda no desktop.
+   ========================================================================== */
+
+.clinica {
+  position: relative;
+  width: 100%;
+  max-width: 1130px;
+  margin: var(--espaco-secao) auto;
+  background-color: var(--yellow-primaria);
+  overflow: hidden;
+  border-radius: 35px;
+  border: 4px solid var(--pink);
+  padding: 56px 6%;
+  container-type: inline-size;
+  font-family: 'Fredoka', system-ui, sans-serif;
+}
+
+@media (max-width: 700px) {
+  .clinica {
+    margin: var(--espaco-secao-mobile) auto;
+    border-radius: 35px;
+    width: calc(100% - 32px);
+    padding-bottom: 10px;
+  }
+}
+
+/* ---------- Círculos decorativos (fundo) ---------- */
+.clinica__circulos {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.clinica__circulo {
+  position: absolute;
+  border-radius: 50%;
+  background-color: var(--yellow-secundaria); /* já existe na sua paleta */
+}
+
+/* espelhados em relação ao banho-tosa (direita/esquerda trocados) pra variar */
+.clinica__circulo--1 { width: 60cqw; aspect-ratio: 1 / 1; top: -26%; right: -16%; }
+.clinica__circulo--2 { width: 40cqw; aspect-ratio: 1 / 1; bottom: -20%; right: 20%; }
+.clinica__circulo--3 { width: 34cqw; aspect-ratio: 1 / 1; top: 4%; left: -14%; }
+.clinica__circulo--4 { width: 22cqw; aspect-ratio: 1 / 1; bottom: 6%; left: 14%; }
+
+@media (max-width: 700px) {
+  .clinica__circulo--1 { width: 95cqw; top: -15%; right: -30%; }
+  .clinica__circulo--2 { width: 70cqw; bottom: -10%; right: 10%; }
+  .clinica__circulo--3 { width: 60cqw; top: 2%; left: -22%; }
+  .clinica__circulo--4 { width: 40cqw; bottom: 18%; left: 4%; }
+}
+
+.clinica__wrap {
+  position: relative;
+  z-index: 2;
+  max-width: 1130px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  align-items: start;
+  gap: 24px;
+}
+
+/* inverte a ordem visual: imagem primeiro (esquerda), texto depois (direita) */
+.clinica__texto  { order: 2; }
+.clinica__imagem { order: 1; }
+
+/* ---------- Coluna de texto ---------- */
+.clinica__titulo {
+  font-family: 'Fredoka', system-ui, sans-serif;
+  color: var(--pink);
+  font-size: clamp(38px, 8cqw, 62px);
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+.clinica__frase {
+  margin-bottom: 22px;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.6s ease 0.15s, transform 0.6s ease 0.15s;
+}
+
+.clinica__frase.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.clinica__frase-destaque {
+  display: inline;
+  font-family: 'Fredoka', system-ui, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: clamp(17px, 3cqw, 24px);
+  line-height: 1.9;
+  color:white;
+  background-color: var(--pink);
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  padding: 3px 12px;
+}
+
+.clinica__lista {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.clinica__item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 700;
+  font-size: clamp(18px, 2.8cqw, 24px);
+  color: #000000;
+  opacity: 0;
+  transform: translateX(-14px);
+  transition: opacity 0.5s ease, transform 0.5s ease, padding-left 0.2s ease;
+  cursor: default;
+}
+
+.clinica__item::before {
+  content: '';
+  flex: 0 0 auto;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--pink);
+  transition: transform 0.2s ease;
+}
+
+.clinica__item:hover { padding-left: 6px; }
+.clinica__item:hover::before { transform: scale(1.35); }
+.clinica__item.in-view { opacity: 1; transform: translateX(0); }
+
+/* ---------- Coluna de imagem (mesmo estilo neutro do banho-tosa) ---------- */
+.clinica__imagem {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  min-height: 340px;
+}
+
+.clinica__foto {
+  position: relative;
+  z-index: 2;
+  width: 86%;
+  aspect-ratio: 4 / 5;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: repeating-linear-gradient(
+    45deg, rgba(0,0,0,0.06), rgba(0,0,0,0.06) 10px,
+    transparent 10px, transparent 20px
+  );
+  border: 3px dashed rgba(0,0,0,0.35);
+  color: #1a1a1a;
+  font-weight: 700;
+  text-align: center;
+  padding: 16px;
+  transition: transform 0.35s ease;
+}
+
+.clinica__foto:hover { transform: translateY(-6px); }
+
+.clinica__foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: none;
+}
+
+.clinica__foto-legenda {
+  font-size: 13px;
+  opacity: 0.7;
+}
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 860px) {
+  .clinica__wrap {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .clinica__imagem {
+    order: -1;
+    min-height: 260px;
+    margin-bottom: 8px;
+  }
+
+  .clinica {
+    padding: 40px 6% 20px; /* bug do "20 px" corrigido aqui */
+  }
+}
+
+@media (max-width: 480px) {
+  .clinica__item { font-size: 19px; }
 }
