@@ -12,6 +12,14 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Alfa Slab One';
+  src: url('assets/fonts/AlfaSlabOne-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
 * {
   margin: 0;
   padding: 0;
@@ -39,9 +47,11 @@ body {
   --espaco-secao: 84px;
   --espaco-secao-mobile: 64px;
 
-  /* Cor da seta dentro da bolinha dos links rápidos.
-     Troque só aqui pra mudar em todos os cards de uma vez. */
-  --seta-cor: #FF197B;
+  /* Cores dos cards de links rápidos (ciclam a cada 4 itens) */
+  --link-azul: #4C6FD4;
+  --link-rosa: #F06BA6;
+  --link-amarelo: #F2B705;
+  --link-vermelho: #F0483E;
 }
 
 /* ==========================================================================
@@ -148,7 +158,6 @@ body {
   width: 100%;
   max-width: 1130px;
   margin: var(--espaco-secao) auto;
-  border-radius: 35px;
   container-type: inline-size;
   font-family: 'Fredoka', system-ui, sans-serif;
 }
@@ -156,100 +165,140 @@ body {
 @media (max-width: 700px) {
   .links-rapidos {
     margin: var(--espaco-secao-mobile) auto;
-    width: calc(100% - 32px);
+    width: calc(100% - 50px);
+
+    .links-rapidos__item {
+      border-radius: 28px;
+
+    }
   }
 }
 
 .links-rapidos__wrap {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
   width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
 }
 
 .links-rapidos__item {
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  aspect-ratio: 4 / 5.5;
   box-sizing: border-box;
   position: relative;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  background-color: #ff549e;
-  border-radius: 23px;
-  padding: 12px 28px 12px 12px;
+  overflow: hidden;
+  background-color: var(--link-azul);
+  border-radius: 26px;
+  padding: 18px;
   text-decoration: none;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  /* variável usada pelo título e pela descrição pra calcular posição */
+  --titulo-fs: clamp(15px, 5.2cqw, 21px);
 }
+
 
 .links-rapidos__item:hover {
   transform: translateY(-3px);
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
 }
 
-.links-rapidos__thumb {
-  flex: 0 0 auto;
-  width: 46px;
-  height: 46px;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 22px;
-  background-color: var(--yellow-secundaria);
+/* Cores alternadas: 1º azul, 2º rosa, 3º amarelo, 4º vermelho (ciclo a cada 4) */
+.links-rapidos__item:nth-child(4n+1) { background-color: var(--yellow-primaria); }
+.links-rapidos__item:nth-child(4n+2) { background-color: var(--pink); }
+.links-rapidos__item:nth-child(4n+3) { background-color: var(--link-amarelo); }
+.links-rapidos__item:nth-child(4n)   { background-color: var(--link-vermelho); }
+
+/* ---------- Ícone grande de fundo, cortado pela metade na lateral direita ---------- */
+.links-rapidos__icone-fundo {
+  position: absolute;
+  top: 50%;
+  right: -35%;
+  transform: translateY(-50%);
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background-color: rgba(215, 215, 215, 0.364);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-position: center;
+  mask-position: center;
+  z-index: 0;
+  pointer-events: none;
 }
 
-.links-rapidos__thumb--vip {
-  background-color: var(--yellow-secundaria);
-  border-radius: 0; /* remove o cantinho arredondado do quadrado */
-
+.links-rapidos__item--vip .links-rapidos__icone-fundo {
   -webkit-mask-image: url('assets/imagens/SVG/Pata.svg');
   mask-image: url('assets/imagens/SVG/Pata.svg');
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-size: contain;
-  mask-size: contain;
-  -webkit-mask-position: center;
-  mask-position: center;
+   background-color: var(--yellow-secundaria);
 }
-.links-rapidos__thumb--agenda {
-  background-color: var(--yellow-secundaria);
-  border-radius: 0;
 
+.links-rapidos__item--pesquisa .links-rapidos__icone-fundo {
   -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 21s-6.7-4.35-9.3-8.1C1.1 10.5 1.5 7 4.3 5.4 6.6 4.1 9.4 4.8 12 7.4c2.6-2.6 5.4-3.3 7.7-2 2.8 1.6 3.2 5.1 1.6 7.5C18.7 16.65 12 21 12 21z'/%3E%3C/svg%3E");
   mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 21s-6.7-4.35-9.3-8.1C1.1 10.5 1.5 7 4.3 5.4 6.6 4.1 9.4 4.8 12 7.4c2.6-2.6 5.4-3.3 7.7-2 2.8 1.6 3.2 5.1 1.6 7.5C18.7 16.65 12 21 12 21z'/%3E%3C/svg%3E");
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-size: contain;
-  mask-size: contain;
-  -webkit-mask-position: center;
-  mask-position: center;
 }
-.links-rapidos__thumb--rota    { background-color: var(--yellow-primaria); }
 
 .links-rapidos__titulo {
-  font-weight: 700;
-  font-size: clamp(16px, 3cqw, 21px); /* era clamp(14px, 2.4cqw, 17px) */
-  color: var(--yellow-primaria);
-  line-height: 1.3; /* um pouco mais de respiro entre linhas */
-}
-
-.links-rapidos__seta {
   position: absolute;
-  right: 10px;
+  left: 18px;
+  right: 18px;
   top: 50%;
-  transform: translateY(-50%);
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  background-color: var(--yellow-primaria);
-  color: var(--seta-cor);
+  transform: translateY(-50%); /* centraliza a CAIXA do título no meio do card */
+  min-height: calc(var(--titulo-fs) * 2.5); /* reserva espaço pra até 2 linhas */
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 18px;
-  font-weight: 700;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  z-index: 1;
+  font-family: 'Alfa Slab One', system-ui, sans-serif;
+  font-weight: 400;
+  font-size: var(--titulo-fs);
+  line-height: 1.25;
+  color: #fff;
+  margin: 0;
+}
+
+.links-rapidos__desc {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  top: calc(50% + (var(--titulo-fs) * 1.25) + 8px); /* logo abaixo da caixa do título */
+  z-index: 1;
+  font-weight: 400;
+  font-size: clamp(11px, 3.4cqw, 14px);
+  line-height: 1.35;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* ---------- Cores de texto específicas por card ----------
+   Canal Pet Bel (--vip): título e descrição em var(--pink)
+   Pesquisa de Satisfação (--pesquisa): título e descrição em var(--yellow-primaria) */
+.links-rapidos__item--vip .links-rapidos__titulo,
+.links-rapidos__item--vip .links-rapidos__desc {
+  color: var(--pink);
+}
+
+.links-rapidos__item--pesquisa .links-rapidos__titulo,
+.links-rapidos__item--pesquisa .links-rapidos__desc {
+  color: var(--yellow-primaria);
+}
+
+@media (max-width: 480px) {
+  .links-rapidos__wrap {
+    gap: 12px;
+  }
+
+  .links-rapidos__item {
+    border-radius: 20px;
+    padding: 16px;
+  }
 }
 
 
