@@ -198,8 +198,11 @@ body {
   border-radius: 26px;
   padding: 18px;
   text-decoration: none;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 6px 0 var(--step-color, rgba(0, 0, 0, 0.25)), 0 9px 16px rgba(0, 0, 0, 0.25);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  /* cor da "aba" da sombra em degrau, ajustada por card via nth-child abaixo */
+  --step-color: rgba(0, 0, 0, 0.25);
 
   /* variável usada pelo título e pela descrição pra calcular posição */
   --titulo-fs: clamp(15px, 5.2cqw, 21px);
@@ -208,14 +211,19 @@ body {
 
 .links-rapidos__item:hover {
   transform: translateY(-3px);
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 0 var(--step-color, rgba(0, 0, 0, 0.25)), 0 11px 18px rgba(0, 0, 0, 0.3);
+}
+
+.links-rapidos__item:active {
+  transform: translateY(2px);
+  box-shadow: 0 3px 0 var(--step-color, rgba(0, 0, 0, 0.25)), 0 5px 10px rgba(0, 0, 0, 0.25);
 }
 
 /* Cores alternadas: 1º azul, 2º rosa, 3º amarelo, 4º vermelho (ciclo a cada 4) */
-.links-rapidos__item:nth-child(4n+1) { background-color: var(--yellow-primaria); }
-.links-rapidos__item:nth-child(4n+2) { background-color: var(--pink); }
-.links-rapidos__item:nth-child(4n+3) { background-color: var(--link-amarelo); }
-.links-rapidos__item:nth-child(4n)   { background-color: var(--link-vermelho); }
+.links-rapidos__item:nth-child(4n+1) { background-color: var(--yellow-primaria); --step-color: #c9c200; }
+.links-rapidos__item:nth-child(4n+2) { background-color: var(--pink); --step-color: #c40f5e; }
+.links-rapidos__item:nth-child(4n+3) { background-color: var(--link-amarelo); --step-color: #b8890a; }
+.links-rapidos__item:nth-child(4n)   { background-color: var(--link-vermelho); --step-color: #b8362d; }
 
 /* ---------- Ícone grande de fundo, cortado pela metade na lateral direita ---------- */
 .links-rapidos__icone-fundo {
@@ -263,6 +271,7 @@ body {
   font-size: var(--titulo-fs);
   line-height: 1.25;
   color: #fff;
+  text-shadow: 0.04em 0.04em 0 #000;
   margin: 0;
 }
 
@@ -517,6 +526,92 @@ body {
 .banho-tosa__item.in-view {
   opacity: 1;
   transform: translateX(0);
+}
+
+/* ---------- Container dos botões de ação ---------- */
+.banho-tosa__acoes {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 26px;
+}
+
+/* ---------- Botão redondo de localização ----------
+   Mesma linguagem visual do botão "Agende aqui" (fundo rosa,
+   ícone amarelo, sombra em "degrau"), só que compacto e circular. */
+.banho-tosa__btn-local {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: var(--pink);
+  color: var(--yellow-primaria);
+  box-shadow: 0 6px 0 #c40f5e, 0 9px 16px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.banho-tosa__btn-local ion-icon {
+  font-size: 22px;
+  pointer-events: none;
+}
+
+.banho-tosa__btn-local:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 0 #c40f5e, 0 11px 18px rgba(0, 0, 0, 0.3);
+}
+
+.banho-tosa__btn-local:active {
+  transform: translateY(2px);
+  box-shadow: 0 3px 0 #c40f5e, 0 5px 10px rgba(0, 0, 0, 0.25);
+}
+
+/* ---------- Botão "Agende aqui" ----------
+   Segue a linguagem visual do selo (fundo rosa, texto amarelo
+   com contorno preto, leve giro e sombra em "degrau"). */
+.banho-tosa__btn-agendar {
+  display: inline-block;
+  padding: 14px 34px;
+  border-radius: 999px;
+  background-color: var(--pink);
+  color: var(--yellow-primaria);
+  font-family: 'Fredoka', system-ui, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  font-size: clamp(15px, 2.6cqw, 19px);
+  text-decoration: none;
+  text-shadow: 0.04em 0.04em 0 #000;
+  box-shadow: 0 6px 0 #c40f5e, 0 9px 16px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.banho-tosa__btn-agendar:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 0 #c40f5e, 0 11px 18px rgba(0, 0, 0, 0.3);
+}
+
+.banho-tosa__btn-agendar:active {
+  transform: translateY(2px);
+  box-shadow: 0 3px 0 #c40f5e, 0 5px 10px rgba(0, 0, 0, 0.25);
+}
+
+@media (max-width: 480px) {
+  .banho-tosa__acoes {
+    justify-content: center;
+    margin-top: 22px;
+  }
+
+  .banho-tosa__btn-agendar {
+    padding: 13px 28px;
+  }
+
+  .banho-tosa__btn-local {
+    width: 44px;
+    height: 44px;
+  }
 }
 
 /* ---------- Coluna de imagem ---------- */
@@ -1349,9 +1444,12 @@ body {
   color: #1a1a1a;
   font-family: 'Fredoka', system-ui, sans-serif;
   font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
   font-size: 13px;
   text-decoration: none;
-  transition: background-color 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 5px 0 #c9a300, 0 8px 14px rgba(0, 0, 0, 0.25);
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .footer__local-btn ion-icon {
@@ -1360,7 +1458,13 @@ body {
 
 .footer__local-btn:hover {
   background-color: var(--yellow-secundaria);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 7px 0 #c9a300, 0 10px 16px rgba(0, 0, 0, 0.3);
+}
+
+.footer__local-btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #c9a300, 0 4px 8px rgba(0, 0, 0, 0.25);
 }
 
 /* ---------- Contato / redes sociais (duas unidades) ---------- */
