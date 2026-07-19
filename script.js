@@ -1,7 +1,7 @@
 // ==========================================================================
 // script.js — Pet Bel
 // 1) Geração das bolhas decorativas da seção Banho e Tosa
-// 2) Reveal em cascata ao rolar (banho-tosa, clinica, etc.)
+// 2) Reveal em cascata ao rolar (banho-tosa, clinica, pet-shop, etc.)
 // ==========================================================================
 
 // ---------- 1) Geração das bolhas decorativas ----------
@@ -74,10 +74,10 @@
 })();
 
 // ---------- 2) Reveal em cascata ao rolar ----------
-// Aplicado a todas as seções desse padrão (banho-tosa, clinica,
+// Aplicado a todas as seções desse padrão (banho-tosa, clinica, pet-shop
 // e qualquer outra que você criar seguindo o mesmo BEM)
 (function () {
-  const secoes = document.querySelectorAll('.banho-tosa, .clinica');
+  const secoes = document.querySelectorAll('.banho-tosa, .clinica, .pet-shop');
   if (!secoes.length) return;
 
   const prefersReducedMotion = window.matchMedia(
