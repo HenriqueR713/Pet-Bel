@@ -1,7 +1,9 @@
 // ==========================================================================
 // script.js — Pet Bel
 // 1) Geração das bolhas decorativas da seção Banho e Tosa
-// 2) Reveal em cascata ao rolar (banho-tosa, clinica, pet-shop, etc.)
+// 2) Reveal em cascata ao rolar (banho-tosa, clinica, pet-shop, historia, etc.)
+// 3) Esmaecimento dinâmico do texto de "Nossa História"
+// 4) Carrossel + Lightbox da seção Dias Promocionais
 // ==========================================================================
 
 // ---------- 1) Geração das bolhas decorativas ----------
@@ -74,10 +76,10 @@
 })();
 
 // ---------- 2) Reveal em cascata ao rolar ----------
-// Aplicado a todas as seções desse padrão (banho-tosa, clinica, pet-shop
-// e qualquer outra que você criar seguindo o mesmo BEM)
+// Aplicado a todas as seções desse padrão (banho-tosa, clinica, pet-shop,
+// historia e qualquer outra que você criar seguindo o mesmo BEM)
 (function () {
-  const secoes = document.querySelectorAll('.banho-tosa, .clinica, .pet-shop');
+  const secoes = document.querySelectorAll('.banho-tosa, .clinica, .pet-shop, .historia');
   if (!secoes.length) return;
 
   const prefersReducedMotion = window.matchMedia(
@@ -113,4 +115,148 @@
 
     alvos.forEach((el) => observer.observe(el));
   });
+})();
+
+// ---------- 3) Esmaecimento dinâmico do texto de "Nossa História" ----------
+// Por padrão o início do texto fica limpo (sem esmaecer). O esmaecimento
+// no topo só aparece depois que a pessoa rola pra baixo, indicando que
+// há texto acima. O esmaecimento da base fica sempre visível (controlado
+// só pelo CSS), já que quase sempre há mais texto abaixo.
+(function () {
+  const corpo = document.querySelector('.historia__corpo');
+  if (!corpo) return;
+
+  function atualizarEsmaecimento() {
+    const rolouParaBaixo = corpo.scrollTop > 4;
+    corpo.classList.toggle('historia__corpo--rolou', rolouParaBaixo);
+  }
+
+  corpo.addEventListener('scroll', atualizarEsmaecimento);
+  atualizarEsmaecimento();
+})();
+
+// ---------- 4) Carrossel + Lightbox — Dias Promocionais ----------
+// Pra adicionar/remover uma imagem da seção "Dias Promocionais", mexa
+// só neste array. Todas as imagens ficam em assets/imagens/Imagens-DiaP/
+// e seguem o padrão de nome img-01, img-02, img-03, img-04 (.jpeg).
+(function () {
+  const imagensDiaP = [
+    { src: 'assets/imagens/Imagens-DiaP/img-01.jpeg', alt: 'Promoção Pet Bel 1' },
+    { src: 'assets/imagens/Imagens-DiaP/img-02.jpeg', alt: 'Promoção Pet Bel 2' },
+    { src: 'assets/imagens/Imagens-DiaP/img-03.jpeg', alt: 'Promoção Pet Bel 3' },
+    { src: 'assets/imagens/Imagens-DiaP/img-04.jpeg', alt: 'Promoção Pet Bel 4' },
+  ];
+
+  const pista = document.querySelector('.dias-promo__pista');
+  if (!pista) return;
+
+  const janela   = document.querySelector('.dias-promo__janela');
+  const btnPrev  = document.querySelector('.dias-promo__seta--prev');
+  const btnNext  = document.querySelector('.dias-promo__seta--next');
+  const lightbox = document.getElementById('diasPromoLightbox');
+  const lbImg    = lightbox ? lightbox.querySelector('.dias-promo__lightbox-img') : null;
+  const lbFechar = lightbox ? lightbox.querySelector('.dias-promo__lightbox-fechar') : null;
+
+  // ---- Monta os slides a partir do array acima ----
+  imagensDiaP.forEach((item) => {
+    const li = document.createElement('li');
+    const img = document.createElement('img');
+    img.src = item.src;
+    img.alt = item.alt;
+    img.loading = 'lazy';
+    img.className = 'dias-promo__slide';
+    li.appendChild(img);
+    pista.appendChild(li);
+  });
+
+  const slides = Array.from(pista.children);
+  if (!slides.length) return;
+
+  // ---- Quantas imagens ficam visíveis por vez (acompanha o CSS) ----
+  function slidesVisiveis() {
+    const largura = window.innerWidth;
+    if (largura <= 480) return 1;
+    if (largura <= 700) return 2;
+    return 3;
+  }
+
+  let indiceAtual = 0;
+
+  function indiceMaximo() {
+    return Math.max(0, slides.length - slidesVisiveis());
+  }
+
+  function irParaIndice(indice) {
+    const max = indiceMaximo();
+    indiceAtual = Math.min(Math.max(indice, 0), max);
+
+    const slide = slides[indiceAtual];
+    const gapPx = parseFloat(getComputedStyle(pista).gap) || 0;
+    const deslocamento = slide.offsetLeft;
+    pista.style.transform = `translateX(-${deslocamento}px)`;
+
+    // trava as setas nas pontas do carrossel (evita "arrasto vazio")
+    btnPrev.disabled = indiceAtual === 0;
+    btnNext.disabled = indiceAtual >= max;
+    btnPrev.style.opacity = btnPrev.disabled ? '0.4' : '1';
+    btnNext.style.opacity = btnNext.disabled ? '0.4' : '1';
+    btnPrev.style.cursor = btnPrev.disabled ? 'default' : 'pointer';
+    btnNext.style.cursor = btnNext.disabled ? 'default' : 'pointer';
+  }
+
+  btnPrev.addEventListener('click', () => irParaIndice(indiceAtual - 1));
+  btnNext.addEventListener('click', () => irParaIndice(indiceAtual + 1));
+
+  // Recalcula a posição ao redimensionar a janela (troca de breakpoint
+  // muda quantas imagens cabem por vez)
+  window.addEventListener('resize', () => irParaIndice(indiceAtual));
+
+  // ---- Arrastar com o dedo/mouse (equivalente ao clique nas setas) ----
+  let arrastando = false;
+  let inicioX = 0;
+
+  janela.addEventListener('pointerdown', (e) => {
+    arrastando = true;
+    inicioX = e.clientX;
+  });
+
+  window.addEventListener('pointerup', (e) => {
+    if (!arrastando) return;
+    arrastando = false;
+    const diferenca = e.clientX - inicioX;
+    if (diferenca > 40) irParaIndice(indiceAtual - 1);
+    else if (diferenca < -40) irParaIndice(indiceAtual + 1);
+  });
+
+  // ---- Lightbox: abre em tela cheia ao clicar em uma imagem ----
+  if (lightbox && lbImg) {
+    slides.forEach((li) => {
+      const img = li.querySelector('img');
+      img.addEventListener('click', () => {
+        lbImg.src = img.src;
+        lbImg.alt = img.alt;
+        lightbox.classList.add('is-aberto');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    function fecharLightbox() {
+      lightbox.classList.remove('is-aberto');
+      document.body.style.overflow = '';
+    }
+
+    // Fecha ao clicar fora da imagem (no fundo escuro)
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) fecharLightbox();
+    });
+
+    if (lbFechar) lbFechar.addEventListener('click', fecharLightbox);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') fecharLightbox();
+    });
+  }
+
+  // posição inicial
+  irParaIndice(0);
 })();

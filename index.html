@@ -47,6 +47,55 @@
     </div>
   </section>
 
+  <section class="dias-promo">
+
+    <div class="dias-promo__circulos" aria-hidden="true">
+      <span class="dias-promo__circulo dias-promo__circulo--1"></span>
+      <span class="dias-promo__circulo dias-promo__circulo--2"></span>
+      <span class="dias-promo__circulo dias-promo__circulo--3"></span>
+      <span class="dias-promo__circulo dias-promo__circulo--4"></span>
+    </div>
+
+    <div class="dias-promo__wrap">
+
+      <h2 class="dias-promo__titulo">DIAS PROMOCIONAIS</h2>
+      <p class="dias-promo__frase">
+        <span class="dias-promo__frase-destaque">Arraste ou use as setas para navegar <br> e clique na imagem para ampliar</span>
+      </p>
+
+      <div class="dias-promo__carrossel">
+
+        <button type="button" class="dias-promo__seta dias-promo__seta--prev" aria-label="Imagem anterior">
+          <ion-icon name="chevron-back"></ion-icon>
+        </button>
+
+        <div class="dias-promo__janela">
+          <ul class="dias-promo__pista">
+            <!-- Os slides (<li><img></li>) são gerados dinamicamente via JS
+                 (ver script.js), a partir da lista de imagens em
+                 assets/imagens/Imagens-DiaP/. Pra adicionar/remover uma
+                 promoção, mexa só no array `imagensDiaP` do JS. -->
+          </ul>
+        </div>
+
+        <button type="button" class="dias-promo__seta dias-promo__seta--next" aria-label="Próxima imagem">
+          <ion-icon name="chevron-forward"></ion-icon>
+        </button>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Lightbox: tela cheia ao clicar em uma imagem do carrossel.
+       Clicar fora da imagem (no fundo escuro) fecha a visualização. -->
+  <div class="dias-promo__lightbox" id="diasPromoLightbox">
+    <button type="button" class="dias-promo__lightbox-fechar" aria-label="Fechar">
+      <ion-icon name="close"></ion-icon>
+    </button>
+    <img src="" alt="" class="dias-promo__lightbox-img">
+  </div>
+
   <section class="banho-tosa">
 
     <div class="banho-tosa__circulos" aria-hidden="true">
@@ -180,6 +229,47 @@
     </div>
   </section>
 
+  <section class="historia">
+
+    <div class="historia__circulos" aria-hidden="true">
+      <span class="historia__circulo historia__circulo--1"></span>
+      <span class="historia__circulo historia__circulo--2"></span>
+      <span class="historia__circulo historia__circulo--3"></span>
+      <span class="historia__circulo historia__circulo--4"></span>
+    </div>
+
+    <div class="historia__wrap">
+
+      <div class="historia__texto">
+        <h2 class="historia__titulo">NOSSA HISTÓRIA</h2>
+
+        <!-- Texto rolável: a classe historia__frase cuida do fade-in
+             (mesmo padrão das outras seções) e historia__corpo cuida
+             da rolagem interna, já que o texto é bem mais longo. -->
+        <div class="historia__frase historia__corpo" tabindex="0">
+          <p>O PET BEL nasceu em 2020, quando o mundo enfrentava um dos momentos mais desafiadores da história. Em plena pandemia, enquanto muitas portas se fechavam, uma nova se abria para dar vida a um sonho construído pelo amor aos pets e pela certeza de que eles sempre mereceram ser tratados como verdadeiros membros da família.</p>
+
+          <p>Desde o início, acreditamos que um bom atendimento vai muito além de produtos ou serviços. Nossa missão sempre foi acolher cada tutor com carinho, respeito e dedicação, compreendendo que, por trás de cada visita, existe uma história de amor e um vínculo único. Queremos que todos se sintam bem-vindos, como se estivessem na casa de alguém que realmente se importa.</p>
+
+          <p>Foi essa forma de acolher as famílias que conquistou a confiança de milhares de pessoas e impulsionou o crescimento do PET BEL. Ao longo dessa trajetória, ampliamos nossa atuação e, além do pet shop, passamos a oferecer banho e tosa terapêuticos e uma clínica veterinária, mantendo o mesmo compromisso que nos acompanha desde o primeiro dia: proporcionar um atendimento humano, responsável e de excelência.</p>
+
+          <p>Esse propósito também orienta a formação da nossa equipe. Buscamos profissionais que compartilhem dos mesmos valores que deram origem ao PET BEL: pessoas que exercem sua profissão com empatia, dedicação e respeito, entendendo que cada pet representa um dos maiores amores da vida de uma família.</p>
+
+          <p>Nossa história começou em um período difícil, mas continua sendo escrita todos os dias por cada tutor que escolhe caminhar ao nosso lado e nos permite retribuir essa confiança oferecendo o melhor cuidado aos pets que fazem parte de sua família.</p>
+
+          <p class="historia__assinatura">PET BEL — Cuidando com amor, tratando como família.</p>
+        </div>
+      </div>
+
+      <div class="historia__imagem">
+        <div class="historia__foto">
+         <img src="assets/imagens/Imagens-Historia/Historia.jpg" alt="Momento da história do Pet Bel">
+        </div>
+      </div>
+
+    </div>
+  </section>
+
   <footer class="footer">
 
     <div class="footer__circulos" aria-hidden="true">
@@ -238,14 +328,17 @@
 
           <div class="footer__redes">
             <!-- Substitua os href pelos links reais de cada rede -->
-            <a href="#" class="footer__rede" target="_blank" rel="noopener" aria-label="Instagram Unidade 1">
+            <a href="https://www.instagram.com/petbeloficial/" class="footer__rede" target="_blank" rel="noopener" aria-label="Instagram">
               <ion-icon name="logo-instagram"></ion-icon>
             </a>
-            <a href="#" class="footer__rede" target="_blank" rel="noopener" aria-label="WhatsApp Unidade 1">
+            <a href="https://api.whatsapp.com/message/AJQNSEDI7HJLD1?autoload=1&app_absent=0" class="footer__rede" target="_blank" rel="noopener" aria-label="WhatsApp">
               <ion-icon name="logo-whatsapp"></ion-icon>
             </a>
-            <a href="#" class="footer__rede" target="_blank" rel="noopener" aria-label="Facebook Unidade 1">
+            <a href="https://www.facebook.com/share/182ompj6eY/?mibextid=wwXIfr" class="footer__rede" target="_blank" rel="noopener" aria-label="Facebook">
               <ion-icon name="logo-facebook"></ion-icon>
+            </a>
+            <a href="mailto:sac@petbelbr.com" class="footer__rede" target="_blank" rel="noopener" aria-label="Gmail">
+              <ion-icon name="at"></ion-icon>
             </a>
           </div>
         </div>

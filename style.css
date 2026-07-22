@@ -311,6 +311,319 @@ body {
   }
 }
 
+/* ==========================================================================
+                          DIAS PROMOCIONAIS
+   Carrossel de imagens: mesmo padrão visual das demais seções (fundo
+   amarelo, borda rosa, círculos decorativos). As imagens deslizam de
+   acordo com o clique nas setas e podem ser abertas em tela cheia
+   (lightbox) ao clicar em qualquer uma delas.
+   ========================================================================== */
+
+.dias-promo {
+  position: relative;
+  width: 100%;
+  max-width: 1130px;
+  margin: var(--espaco-secao) auto;
+  background-color: var(--yellow-primaria);
+  overflow: hidden;
+  border-radius: 35px;
+  border: 4px solid var(--pink);
+  padding: 56px 6%;
+  container-type: inline-size;
+  font-family: 'Fredoka', system-ui, sans-serif;
+}
+
+@media (max-width: 700px) {
+  .dias-promo {
+    margin: var(--espaco-secao-mobile) auto;
+    border-radius: 40px;
+    width: calc(100% - 32px);
+    padding: 40px 0 32px;
+  }
+}
+
+/* ---------- Círculos decorativos (fundo) ---------- */
+.dias-promo__circulos {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.dias-promo__circulo {
+  position: absolute;
+  border-radius: 50%;
+  background-color: var(--yellow-secundaria);
+}
+
+.dias-promo__circulo--1 {
+  width: 60cqw;
+  aspect-ratio: 1 / 1;
+  top: -26%;
+  left: -16%;
+}
+
+.dias-promo__circulo--2 {
+  width: 40cqw;
+  aspect-ratio: 1 / 1;
+  bottom: -20%;
+  left: 20%;
+}
+
+.dias-promo__circulo--3 {
+  width: 34cqw;
+  aspect-ratio: 1 / 1;
+  top: 4%;
+  right: -14%;
+}
+
+.dias-promo__circulo--4 {
+  width: 22cqw;
+  aspect-ratio: 1 / 1;
+  bottom: 6%;
+  right: 14%;
+}
+
+@media (max-width: 700px) {
+  .dias-promo__circulo--1 {
+    width: 95cqw;
+    top: -15%;
+    left: -30%;
+  }
+
+  .dias-promo__circulo--2 {
+    width: 70cqw;
+    bottom: -10%;
+    left: 10%;
+  }
+
+  .dias-promo__circulo--3 {
+    width: 60cqw;
+    top: 2%;
+    right: -22%;
+  }
+
+  .dias-promo__circulo--4 {
+    width: 40cqw;
+    bottom: 18%;
+    right: 4%;
+  }
+}
+
+.dias-promo__wrap {
+  position: relative;
+  z-index: 2;
+  max-width: 1130px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.dias-promo__titulo {
+  font-family: 'Fredoka', system-ui, sans-serif;
+  color: var(--pink);
+  font-size: clamp(38px, 8cqw, 62px);
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 700px) {
+  .dias-promo__titulo {
+    padding: 0 6%;
+  }
+}
+
+.dias-promo__frase {
+  margin-bottom: 32px;
+}
+
+@media (max-width: 700px) {
+  .dias-promo__frase {
+    padding: 0 6%;
+  }
+}
+
+.dias-promo__frase-destaque {
+  display: inline;
+  font-family: 'Fredoka', system-ui, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: clamp(15px, 2.6cqw, 20px);
+  line-height: 1.9;
+  color: #fff;
+  background-color: var(--pink);
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  padding: 3px 12px;
+}
+
+/* ---------- Carrossel ---------- */
+.dias-promo__carrossel {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.dias-promo__janela {
+  flex: 1 1 auto;
+  overflow: hidden;
+}
+
+.dias-promo__pista {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+  transition: transform 0.45s ease;
+  will-change: transform;
+}
+
+.dias-promo__pista li {
+  flex: 0 0 auto;
+  width: calc((100% - 40px) / 3); /* 3 imagens visíveis no desktop (2 gaps de 20px) */
+}
+
+.dias-promo__slide {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 20px;
+  border: 3px solid var(--pink);
+  cursor: zoom-in;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+  background-color: rgba(0, 0, 0, 0.06);
+}
+
+/* ---------- Setas de navegação ----------
+   Mesma linguagem visual do botão redondo de localização (fundo rosa,
+   ícone amarelo, sombra em "degrau"). */
+.dias-promo__seta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--pink);
+  color: var(--yellow-primaria);
+  cursor: pointer;
+  box-shadow: 0 6px 0 #c40f5e, 0 9px 16px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dias-promo__seta ion-icon {
+  font-size: 22px;
+  pointer-events: none;
+}
+
+.dias-promo__seta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 0 #c40f5e, 0 11px 18px rgba(0, 0, 0, 0.3);
+}
+
+.dias-promo__seta:active {
+  transform: translateY(2px);
+  box-shadow: 0 3px 0 #c40f5e, 0 5px 10px rgba(0, 0, 0, 0.25);
+}
+
+@media (max-width: 700px) {
+  .dias-promo__carrossel {
+    padding: 0 14px;
+    gap: 8px;
+  }
+
+  .dias-promo__pista li {
+    width: calc((100% - 20px) / 2); /* 2 imagens visíveis no mobile */
+  }
+
+  .dias-promo__seta {
+    width: 40px;
+    height: 40px;
+  }
+
+  .dias-promo__seta ion-icon {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dias-promo__pista li {
+    width: 100%; /* 1 imagem por vez em telas bem estreitas */
+  }
+}
+
+/* ---------- Lightbox (visualização em tela cheia) ---------- */
+.dias-promo__lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.88);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease;
+  padding: 24px;
+}
+
+.dias-promo__lightbox.is-aberto {
+  opacity: 1;
+  visibility: visible;
+}
+
+.dias-promo__lightbox-img {
+  max-width: min(90vw, 900px);
+  max-height: 88vh;
+  object-fit: contain;
+  border-radius: 14px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  transform: scale(0.94);
+  transition: transform 0.25s ease;
+}
+
+.dias-promo__lightbox.is-aberto .dias-promo__lightbox-img {
+  transform: scale(1);
+}
+
+.dias-promo__lightbox-fechar {
+  position: absolute;
+  top: 22px;
+  right: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--pink);
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.dias-promo__lightbox-fechar ion-icon {
+  font-size: 24px;
+  pointer-events: none;
+}
+
+.dias-promo__lightbox-fechar:hover {
+  background-color: var(--yellow-secundaria);
+  color: #1a1a1a;
+  transform: rotate(90deg);
+}
+
+@media (max-width: 480px) {
+  .dias-promo__lightbox-fechar {
+    top: 14px;
+    right: 14px;
+    width: 38px;
+    height: 38px;
+  }
+}
+
 
 /* ==========================================================================
                           BANHO E TOSA 
@@ -1219,6 +1532,275 @@ body {
 @media (max-width: 480px) {
   .pet-shop__item {
     font-size: 19px;
+  }
+}
+
+/* ==========================================================================
+   NOSSA HISTÓRIA — mesmo padrão visual das seções acima (fundo amarelo,
+   borda rosa, círculos decorativos, coluna de imagem com placeholder).
+   Como o texto é bem mais longo que os das outras seções, a coluna de
+   texto tem altura fixa (igual à coluna de imagem) e rola internamente,
+   mantendo a seção com o MESMO TAMANHO das demais.
+   ========================================================================== */
+
+.historia {
+  position: relative;
+  width: 100%;
+  max-width: 1130px;
+  margin: var(--espaco-secao) auto;
+  background-color: var(--yellow-primaria);
+  overflow: hidden;
+  border-radius: 35px;
+  border: 4px solid var(--pink);
+  padding: 56px 6%;
+  container-type: inline-size;
+  font-family: 'Fredoka', system-ui, sans-serif;
+}
+
+@media (max-width: 700px) {
+  .historia {
+    margin: var(--espaco-secao-mobile) auto;
+    border-radius: 40px;
+    width: calc(100% - 32px);
+  }
+}
+
+/* ---------- Círculos decorativos (fundo) ---------- */
+.historia__circulos {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.historia__circulo {
+  position: absolute;
+  border-radius: 50%;
+  background-color: var(--yellow-secundaria);
+}
+
+.historia__circulo--1 {
+  width: 60cqw;
+  aspect-ratio: 1 / 1;
+  top: -26%;
+  left: -16%;
+}
+
+.historia__circulo--2 {
+  width: 40cqw;
+  aspect-ratio: 1 / 1;
+  bottom: -20%;
+  left: 20%;
+}
+
+.historia__circulo--3 {
+  width: 34cqw;
+  aspect-ratio: 1 / 1;
+  top: 4%;
+  right: -14%;
+}
+
+.historia__circulo--4 {
+  width: 22cqw;
+  aspect-ratio: 1 / 1;
+  bottom: 6%;
+  right: 14%;
+}
+
+@media (max-width: 700px) {
+  .historia__circulo--1 {
+    width: 95cqw;
+    top: -15%;
+    left: -30%;
+  }
+
+  .historia__circulo--2 {
+    width: 70cqw;
+    bottom: -10%;
+    left: 10%;
+  }
+
+  .historia__circulo--3 {
+    width: 60cqw;
+    top: 2%;
+    right: -22%;
+  }
+
+  .historia__circulo--4 {
+    width: 40cqw;
+    bottom: 18%;
+    right: 4%;
+  }
+}
+
+.historia__wrap {
+  position: relative;
+  z-index: 2;
+  max-width: 1130px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: 24px;
+}
+
+/* ---------- Coluna de texto ---------- */
+.historia__titulo {
+  font-family: 'Fredoka', system-ui, sans-serif;
+  color: var(--pink);
+  font-size: clamp(38px, 8cqw, 62px);
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+/* .historia__frase cuida do fade-in (mesmo padrão das outras seções) */
+.historia__frase {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.6s ease 0.15s, transform 0.6s ease 0.15s;
+}
+
+.historia__frase.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* .historia__corpo cuida da rolagem interna do texto, mantendo a
+   seção com a mesma altura das demais mesmo com um texto bem maior */
+.historia__corpo {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-height: 480px;
+  overflow-y: auto;
+  padding-right: 16px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--pink) rgba(0, 0, 0, 0.12);
+
+  /* leve sombra no topo/base pra indicar que o texto continua.
+     --fade-top começa em 0 (sem esmaecer o início do texto) e só
+     vira 8px quando o JS detecta que a pessoa rolou pra baixo
+     (ver script.js). O esmaecimento de baixo fica sempre fixo. */
+  --fade-top: 0px;
+  mask-image: linear-gradient(to bottom, transparent 0, #000 var(--fade-top), #000 calc(100% - 8px), transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 var(--fade-top), #000 calc(100% - 8px), transparent 100%);
+}
+
+.historia__corpo.historia__corpo--rolou {
+  --fade-top: 8px;
+}
+
+.historia__corpo::-webkit-scrollbar {
+  width: 8px;
+}
+
+.historia__corpo::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.12);
+  border-radius: 10px;
+}
+
+.historia__corpo::-webkit-scrollbar-thumb {
+  background-color: var(--pink);
+  border-radius: 10px;
+}
+
+.historia__corpo p {
+  font-weight: 500;
+  font-size: clamp(14px, 2.1cqw, 16px);
+  line-height: 1.65;
+  color: #1a1a1a;
+}
+
+.historia__corpo .historia__assinatura {
+  font-weight: 700;
+  color: var(--pink);
+}
+
+/* ---------- Coluna de imagem ---------- */
+.historia__imagem {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  min-height: 340px;
+}
+
+.historia__foto {
+  position: relative;
+  z-index: 2;
+  width: 86%;
+  aspect-ratio: 4 / 5;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: repeating-linear-gradient(
+    45deg, rgba(0,0,0,0.06), rgba(0,0,0,0.06) 10px,
+    transparent 10px, transparent 20px
+  );
+  border: 3px dashed rgba(0,0,0,0.35);
+  color: #1a1a1a;
+  font-weight: 700;
+  text-align: center;
+  padding: 16px;
+  transition: transform 0.35s ease;
+}
+
+.historia__foto:hover {
+  transform: translateY(-6px);
+}
+
+.historia__foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+ 
+}
+
+.historia__foto-legenda {
+  font-size: 13px;
+  opacity: 0.7;
+}
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 860px) {
+  .historia__wrap {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .historia__imagem {
+    order: -1;
+    min-height: 260px;
+    margin-bottom: 8px;
+  }
+
+  .historia__corpo {
+    max-height: 400px;
+  }
+
+  .historia {
+    padding: 40px 6%;
+    padding-bottom: 20px;
+  }
+}
+
+/* Padding mais fino em telas de celular — precisa vir depois da regra
+   de 860px acima pra vencer o cascade (mesma especificidade) */
+@media (max-width: 700px) {
+  .historia {
+    padding: 28px 18px 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .historia__corpo {
+    max-height: 340px;
+  }
+
+  .historia__corpo p {
+    font-size: 15px;
   }
 }
 
