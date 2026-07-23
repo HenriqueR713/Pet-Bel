@@ -933,45 +933,27 @@ body {
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  min-height: 340px;
+  min-height: 380px;
 }
 
 .banho-tosa__foto {
   position: relative;
   z-index: 2;
-  width: 86%;
+  width: 94%;
   aspect-ratio: 4 / 5;
   border-radius: 20px;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: repeating-linear-gradient(
-    45deg, rgba(0,0,0,0.06), rgba(0,0,0,0.06) 10px,
-    transparent 10px, transparent 20px
-  );
-  border: 3px dashed rgba(0,0,0,0.35);
-  color: #1a1a1a;
-  font-weight: 700;
-  text-align: center;
-  padding: 16px;
-  transition: transform 0.35s ease;
-}
-
-.banho-tosa__foto:hover {
-  transform: translateY(-6px);
+  border: 5px solid var(--pink);
 }
 
 .banho-tosa__foto img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: none;
-}
-
-.banho-tosa__foto-legenda {
-  font-size: 13px;
-  opacity: 0.7;
+  display: block;
 }
 
 /* ---------- Responsivo ---------- */
@@ -983,7 +965,7 @@ body {
 
   .banho-tosa__imagem {
     order: -1;
-    min-height: 260px;
+    min-height: 300px;
     margin-bottom: 8px;
   }
 
@@ -1174,43 +1156,27 @@ body {
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  min-height: 340px;
+  min-height: 380px;
 }
 
 .clinica__foto {
   position: relative;
   z-index: 2;
-  width: 86%;
+  width: 94%;
   aspect-ratio: 4 / 5;
   border-radius: 20px;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: repeating-linear-gradient(
-    45deg, rgba(0,0,0,0.06), rgba(0,0,0,0.06) 10px,
-    transparent 10px, transparent 20px
-  );
-  border: 3px dashed rgba(0,0,0,0.35);
-  color: #1a1a1a;
-  font-weight: 700;
-  text-align: center;
-  padding: 16px;
-  transition: transform 0.35s ease;
+  border: 5px solid var(--pink);
 }
-
-.clinica__foto:hover { transform: translateY(-6px); }
 
 .clinica__foto img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: none;
-}
-
-.clinica__foto-legenda {
-  font-size: 13px;
-  opacity: 0.7;
+  display: block;
 }
 
 /* ---------- Responsivo ---------- */
@@ -1222,7 +1188,7 @@ body {
 
   .clinica__imagem {
     order: -1;
-    min-height: 260px;
+    min-height: 300px;
     margin-bottom: 8px;
   }
 
@@ -1461,45 +1427,27 @@ body {
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  min-height: 340px;
+  min-height: 380px;
 }
 
 .pet-shop__foto {
   position: relative;
   z-index: 2;
-  width: 86%;
+  width: 94%;
   aspect-ratio: 4 / 5;
   border-radius: 20px;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: repeating-linear-gradient(
-    45deg, rgba(0,0,0,0.06), rgba(0,0,0,0.06) 10px,
-    transparent 10px, transparent 20px
-  );
-  border: 3px dashed rgba(0,0,0,0.35);
-  color: #1a1a1a;
-  font-weight: 700;
-  text-align: center;
-  padding: 16px;
-  transition: transform 0.35s ease;
-}
-
-.pet-shop__foto:hover {
-  transform: translateY(-6px);
+  border: 5px solid var(--pink);
 }
 
 .pet-shop__foto img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: none;
-}
-
-.pet-shop__foto-legenda {
-  font-size: 13px;
-  opacity: 0.7;
+  display: block;
 }
 
 /* ---------- Responsivo ---------- */
@@ -1511,7 +1459,7 @@ body {
 
   .pet-shop__imagem {
     order: -1;
-    min-height: 260px;
+    min-height: 300px;
     margin-bottom: 8px;
   }
 
@@ -1722,45 +1670,27 @@ body {
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  min-height: 340px;
+  min-height: 380px;
 }
 
 .historia__foto {
   position: relative;
   z-index: 2;
-  width: 86%;
+  width: 94%;
   aspect-ratio: 4 / 5;
   border-radius: 20px;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: repeating-linear-gradient(
-    45deg, rgba(0,0,0,0.06), rgba(0,0,0,0.06) 10px,
-    transparent 10px, transparent 20px
-  );
-  border: 3px dashed rgba(0,0,0,0.35);
-  color: #1a1a1a;
-  font-weight: 700;
-  text-align: center;
-  padding: 16px;
-  transition: transform 0.35s ease;
-}
-
-.historia__foto:hover {
-  transform: translateY(-6px);
+  border: 5px solid var(--pink);
 }
 
 .historia__foto img {
   width: 100%;
   height: 100%;
   object-fit: cover;
- 
-}
-
-.historia__foto-legenda {
-  font-size: 13px;
-  opacity: 0.7;
+  display: block;
 }
 
 /* ---------- Responsivo ---------- */
@@ -1772,7 +1702,7 @@ body {
 
   .historia__imagem {
     order: -1;
-    min-height: 260px;
+    min-height: 300px;
     margin-bottom: 8px;
   }
 
@@ -1901,24 +1831,17 @@ body {
   }
 }
 
+/* Grid fluido: em vez de breakpoints fixos (que deixavam as colunas
+   espremidas em larguras "de PC" intermediárias), cada bloco tem uma
+   largura mínima e o grid decide sozinho quantas colunas cabem por
+   linha, reorganizando tudo automaticamente. */
 .footer__wrap {
   position: relative;
   z-index: 2;
   display: grid;
-  grid-template-columns: 1.1fr 1fr 1.2fr 1.2fr;
-  gap: 32px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 32px 40px;
   margin-bottom: 40px;
-}
-
-@media (max-width: 860px) {
-  .footer__wrap {
-    grid-template-columns: 1fr 1fr;
-    row-gap: 32px;
-  }
-
-  .footer__brand {
-    grid-column: 1 / -1;
-  }
 }
 
 @media (max-width: 560px) {
@@ -1929,27 +1852,69 @@ body {
 }
 
 /* ---------- Marca ----------
-   Logo e frase lado a lado (logo menor à esquerda, texto à direita)
-   pra ocupar menos espaço vertical no footer. */
+   PET (esquerda) — logo (centro) — BEL (direita), igual à composição
+   do hero, só que em escala reduzida pra caber no footer. A frase
+   fica centralizada logo abaixo dessa linha. */
 .footer__brand {
+  position: relative;
+  z-index: 2;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
-  gap: 14px;
+  text-align: center;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+
+.footer__brand-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
 }
 
 .footer__logo {
-  width: 56px;
+  width: 64px;
   height: auto;
   object-fit: contain;
   flex-shrink: 0;
+}
+
+/* Reaproveita a mesma técnica de camadas do hero (.camada-tras /
+   .camada-frente), só que em wrapper relativo (não absoluto) e com
+   fonte bem menor. As cores trocam pra funcionar sobre o fundo rosa
+   do footer: sombra em amarelo, contorno preto na frente. */
+.footer__brand-text {
+  position: relative;
+  display: inline-block;
+  line-height: 1;
+}
+
+.footer__brand-text .camada-tras,
+.footer__brand-text .camada-frente {
+  position: static;
+  font-size: clamp(44px, 7cqw, 62px);
+  transform: none;
+}
+
+.footer__brand-text .camada-tras {
+  position: absolute;
+  inset: 0;
+  color: var(--yellow-primaria);
+  transform: translate(0.04em, 0.04em);
+}
+
+.footer__brand-text .camada-frente {
+  position: relative;
+  color: transparent;
+  -webkit-text-stroke: 0.035em #000;
 }
 
 .footer__tagline {
   font-size: 13px;
   line-height: 1.5;
   color: rgba(255, 255, 255, 0.85);
-  max-width: 220px;
+  max-width: 240px;
   margin: 0;
 }
 
@@ -2095,54 +2060,121 @@ body {
   transform: translateY(-3px);
 }
 
-/* ---------- Base do footer ---------- */
+/* ---------- Base do footer ----------
+   Mobile (padrão): coluna centralizada — linha de direitos autorais
+   no topo, uma linha divisória fina no meio e, por baixo,
+   "Desenvolvido por" com o nome em formato de botão/badge.
+   Desktop (ver media query mais abaixo): vira uma linha só, com os
+   direitos autorais à esquerda e "Desenvolvido por" + botão à
+   direita, sem a linha divisória — igual à referência. */
 .footer__base {
   position: relative;
   z-index: 2;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  gap: 12px;
-  padding-top: 20px;
-  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  gap: 16px;
+  padding-top: 24px;
   font-size: 13px;
   color: rgba(255, 255, 255, 0.85);
 }
 
 .footer__direitos {
   margin: 0;
+  line-height: 1.5;
+}
+
+/* Linha fina separando "Todos os direitos reservados" de "Desenvolvido por" */
+.footer__base-divisor {
+  display: block;
+  width: 100%;
+  max-width: 280px;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
 .footer__dev {
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
 }
 
+/* ---------- Responsivo (desktop) ----------
+   A partir de 700px a base do footer vira uma única linha: direitos
+   autorais à esquerda, "Desenvolvido por" + botão à direita (a linha
+   divisória alinhada ao centro some, já que os dois blocos ficam
+   lado a lado). */
+@media (min-width: 560px) {
+  .footer__base {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    text-align: left;
+    gap: 16px 24px;
+  }
+
+  .footer__direitos {
+    flex: 1 1 auto;
+    min-width: 220px;
+  }
+
+  .footer__base-divisor {
+    display: none;
+  }
+
+  .footer__dev {
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    flex: 0 0 auto;
+  }
+}
+
+/* Badge/botão com o nome do desenvolvedor, no estilo da referência:
+   fundo amarelo, texto escuro, ícone "</>" à esquerda e ícone de
+   link externo à direita, com a mesma sombra em "degrau" das CTAs
+   do site. */
 .footer__dev-link {
-  color: var(--yellow-primaria);
-  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 999px;
+  background-color: var(--yellow-primaria);
+  color: #1a1a1a;
+  font-family: 'Fredoka', system-ui, sans-serif;
   font-weight: 700;
-  transition: color 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  font-size: 13px;
+  text-decoration: none;
+  box-shadow: 0 5px 0 #c9a300, 0 8px 14px rgba(0, 0, 0, 0.25);
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.footer__dev-link ion-icon {
+  font-size: 16px;
+  pointer-events: none;
 }
 
 .footer__dev-link:hover {
-  color: #fff;
-  text-decoration: underline;
+  background-color: var(--yellow-secundaria);
+  transform: translateY(-3px);
+  box-shadow: 0 7px 0 #c9a300, 0 10px 16px rgba(0, 0, 0, 0.3);
+}
+
+.footer__dev-link:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #c9a300, 0 4px 8px rgba(0, 0, 0, 0.25);
 }
 
 @media (max-width: 560px) {
   .footer__base {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 6px;
+    padding-top: 20px;
   }
-}
-
-@media (max-width: 700px) {
-.footer__base {
-  align-items: center;
-  justify-content: center;
-}
-
 }
