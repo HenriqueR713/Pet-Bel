@@ -225,6 +225,13 @@ body {
 .links-rapidos__item:nth-child(4n+3) { background-color: var(--link-amarelo); --step-color: #b8890a; }
 .links-rapidos__item:nth-child(4n)   { background-color: var(--link-vermelho); --step-color: #b8362d; }
 
+/* Sobrescreve o ciclo de cores pra manter os novos cards no mesmo
+   padrão rosa/amarelo dos dois primeiros (avaliação = rosa, em breve = amarelo).
+   Precisa de um seletor com especificidade MAIOR que o nth-child acima
+   (que conta como 2 classes) — por isso o .links-rapidos__wrap na frente. */
+.links-rapidos__wrap .links-rapidos__item--avaliacao { background-color: var(--pink); --step-color: #c40f5e; }
+.links-rapidos__wrap .links-rapidos__item--novo      { background-color: var(--yellow-primaria); --step-color: #c9c200; }
+
 /* ---------- Ícone grande de fundo, cortado pela metade na lateral direita ---------- */
 .links-rapidos__icone-fundo {
   position: absolute;
@@ -253,6 +260,24 @@ body {
 .links-rapidos__item--pesquisa .links-rapidos__icone-fundo {
   -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 21s-6.7-4.35-9.3-8.1C1.1 10.5 1.5 7 4.3 5.4 6.6 4.1 9.4 4.8 12 7.4c2.6-2.6 5.4-3.3 7.7-2 2.8 1.6 3.2 5.1 1.6 7.5C18.7 16.65 12 21 12 21z'/%3E%3C/svg%3E");
   mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 21s-6.7-4.35-9.3-8.1C1.1 10.5 1.5 7 4.3 5.4 6.6 4.1 9.4 4.8 12 7.4c2.6-2.6 5.4-3.3 7.7-2 2.8 1.6 3.2 5.1 1.6 7.5C18.7 16.65 12 21 12 21z'/%3E%3C/svg%3E");
+}
+
+/* Card "Avalie a Pet Bel" — estrela mascarada no fundo, igual ao
+   padrão dos dois cards já existentes */
+.links-rapidos__item--avaliacao .links-rapidos__icone-fundo {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2 15 9 22 9.3 16.5 14 18 21 12 17.3 6 21 7.5 14 2 9.3 9 9Z'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2 15 9 22 9.3 16.5 14 18 21 12 17.3 6 21 7.5 14 2 9.3 9 9Z'/%3E%3C/svg%3E");
+}
+
+/* Card "Em breve" — sem essa regra, o ícone de fundo ficava sem
+   mask-image (herdava só o fundo cinza padrão do .links-rapidos__icone-fundo),
+   por isso aparecia com uma cor diferente do Canal Pet Bel. Usando a
+   mesma pata e a mesma cor (--yellow-secundaria), já que o fundo do
+   card também é --yellow-primaria, igual ao Canal Pet Bel. */
+.links-rapidos__item--novo .links-rapidos__icone-fundo {
+  -webkit-mask-image: url('assets/imagens/SVG/Pata.svg');
+  mask-image: url('assets/imagens/SVG/Pata.svg');
+  background-color: var(--yellow-secundaria);
 }
 
 .links-rapidos__titulo {
@@ -289,7 +314,9 @@ body {
 
 /* ---------- Cores de texto específicas por card ----------
    Canal Pet Bel (--vip): título e descrição em var(--pink)
-   Pesquisa de Satisfação (--pesquisa): título e descrição em var(--yellow-primaria) */
+   Pesquisa de Satisfação (--pesquisa): título e descrição em var(--yellow-primaria)
+   Avalie a Pet Bel (--avaliacao): título e descrição em var(--yellow-primaria)
+   Em breve (--novo): título e descrição em var(--pink) */
 .links-rapidos__item--vip .links-rapidos__titulo,
 .links-rapidos__item--vip .links-rapidos__desc {
   color: var(--pink);
@@ -298,6 +325,16 @@ body {
 .links-rapidos__item--pesquisa .links-rapidos__titulo,
 .links-rapidos__item--pesquisa .links-rapidos__desc {
   color: var(--yellow-primaria);
+}
+
+.links-rapidos__item--avaliacao .links-rapidos__titulo,
+.links-rapidos__item--avaliacao .links-rapidos__desc {
+  color: var(--yellow-primaria);
+}
+
+.links-rapidos__item--novo .links-rapidos__titulo,
+.links-rapidos__item--novo .links-rapidos__desc {
+  color: var(--pink);
 }
 
 @media (max-width: 480px) {
@@ -1947,6 +1984,43 @@ body {
   color: #fff;
   font-weight: 700;
   margin-left: 4px;
+}
+
+/* ---------- Horário por unidade ----------
+   Cada unidade (Fernando Guilhon 1039 / Econômico Jurunas 962) tem
+   seu próprio bloco, com o nome da unidade em destaque e, dentro dela,
+   um rótulo por serviço (Pet Shop / Clínica / Banho & Tosa) seguido
+   da lista de horários daquele serviço (reaproveitando .footer__lista).
+   Pra ajustar algum horário, mexa só no <li> correspondente no HTML. */
+.footer__horario-unidade {
+  margin-bottom: 22px;
+}
+
+.footer__horario-unidade:last-child {
+  margin-bottom: 0;
+}
+
+.footer__horario-nome {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  color:var(--yellow-secundaria);
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.footer__horario-servico {
+  font-size: 12.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: white;
+  margin: 12px 0 6px;
+}
+
+.footer__horario-servico:first-of-type {
+  margin-top: 0;
 }
 
 /* ---------- Local (cards clicáveis com botão "Ver no mapa") ---------- */

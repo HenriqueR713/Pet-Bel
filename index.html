@@ -44,6 +44,18 @@
         <span class="links-rapidos__desc">Sua opinião ajuda a Pet Bel a evoluir sempre mais para você e seu pet.</span>
       </a>
 
+      <a class="links-rapidos__item links-rapidos__item--avaliacao" href="https://www.google.com.br/maps/place/PET+BEL/@-1.4683145,-48.4911455,17z/data=!4m8!3m7!1s0x92a48f3b7f6710ed:0xbc61ad4b2f339d2c!8m2!3d-1.4683199!4d-48.4885706!9m1!1b1!16s%2Fg%2F11qrvbz1l6?hl=pt-BR&entry=ttu&g_ep=EgoyMDI2MDcyMi4wIKXMDSoASAFQAw%3D%3D" target="_blank">
+        <span class="links-rapidos__icone-fundo" aria-hidden="true"></span>
+        <span class="links-rapidos__titulo">Avalie a Pet Bel</span>
+        <span class="links-rapidos__desc">Sua avaliação nos ajuda a chegar em mais tutores como você.</span>
+      </a>
+
+      <a class="links-rapidos__item links-rapidos__item--novo" href="#">
+        <span class="links-rapidos__icone-fundo" aria-hidden="true"></span>
+        <span class="links-rapidos__titulo">Em breve</span>
+        <span class="links-rapidos__desc">Uma novidade chegando pra você e seu pet.</span>
+      </a>
+
     </div>
   </section>
 
@@ -295,12 +307,36 @@
 
       <div class="footer__bloco footer__horario">
         <h3 class="footer__titulo">Horário de Funcionamento</h3>
-        <ul class="footer__lista">
-          <!-- Ajuste os dias/horários conforme o funcionamento real -->
-          <li>Segunda a Sexta <strong>8h às 18h</strong></li>
-          <li>Sábado <strong>8h às 13h</strong></li>
-          <li>Domingo <strong>Fechado</strong></li>
-        </ul>
+
+        <!-- Unidade 1: R. Eng. Fernando Guilhon, 1039 — abriga Pet Shop
+             e Clínica Veterinária, cada um com um horário próprio.
+             Ajuste os horários de cada serviço separadamente aqui. -->
+        <div class="footer__horario-unidade">
+          <span class="footer__horario-nome">Fernando Guilhon, 1039</span>
+
+          <p class="footer__horario-servico">Pet Shop</p>
+          <ul class="footer__lista">
+            <li>Segunda a Sexta <strong>8h às 13h30</strong></li>
+            <li>Sábado e Domingo <strong>8h30 às 12h30</strong></li>
+          </ul>
+
+          <p class="footer__horario-servico">Clínica Veterinária</p>
+          <ul class="footer__lista">
+            <li>Segunda a Sexta <strong>8h30 às 18h30</strong></li>
+            <li>Sábado <strong>8h30 às 12h30</strong></li>
+          </ul>
+        </div>
+
+        <!-- Unidade 2: Estacionamento do Econômico Jurunas — Pet Shop
+             e Banho & Tosa, com um único horário de funcionamento. -->
+        <div class="footer__horario-unidade">
+          <span class="footer__horario-nome">Econômico Jurunas, 962</span>
+
+          <p class="footer__horario-servico">Pet Shop e Banho &amp; Tosa</p>
+          <ul class="footer__lista">
+            <li>Segunda a Sábado <strong>8h30 às 18h</strong></li>
+          </ul>
+        </div>
       </div>
 
       <div class="footer__bloco footer__local">
@@ -309,18 +345,18 @@
         <div class="footer__local-cards">
           <!-- Ajuste nome, endereço e o link do Google Maps de cada unidade -->
           <div class="footer__local-card">
-            <span class="footer__local-nome">Clínica Veterinária — Cidade, UF</span>
+            <span class="footer__local-nome">Clínica Veterinária — Belém, PA</span>
             <p class="footer__local-endereco">R. Eng. Fernando Guilhon, 1039<br></p>
-            <a href="https://www.google.com/maps/search/?api=1&query=Endere%C3%A7o+da+Unidade+1" target="_blank" rel="noopener" class="footer__local-btn">
+            <a href="https://www.google.com.br/maps/place/PET+BEL/@-1.4684083,-48.4884921,3a,55.2y,314.04h,94.43t/data=!3m7!1e1!3m5!1s8wViG_kujaEtRyl7BTRlRA!2e0!6shttps:%2F%2Fstreetviewpixels-pa.clients6.google.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-4.432609946257244%26panoid%3D8wViG_kujaEtRyl7BTRlRA%26yaw%3D314.04152566176674!7i16384!8i8192!4m16!1m9!3m8!1s0x92a48f3b7f6710ed:0xbc61ad4b2f339d2c!2sPET+BEL!8m2!3d-1.4683199!4d-48.4885706!9m1!1b1!16s%2Fg%2F11qrvbz1l6!3m5!1s0x92a48f3b7f6710ed:0xbc61ad4b2f339d2c!8m2!3d-1.4683199!4d-48.4885706!16s%2Fg%2F11qrvbz1l6?hl=pt-BR&entry=ttu&g_ep=EgoyMDI2MDcyMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" class="footer__local-btn">
               <ion-icon name="navigate"></ion-icon>
               Ver no mapa
             </a>
           </div>
 
           <div class="footer__local-card">
-            <span class="footer__local-nome">Pet Shop e Banho & Tosa — Cidade, UF</span>
+            <span class="footer__local-nome">Pet Shop e Banho & Tosa — Belém, PA</span>
             <p class="footer__local-endereco">R. Eng. Fernando Guilhon, 962<br>(Estacionamento do Supermecado <br> Econômico Jurunas)</p>
-            <a href="https://www.google.com/maps/search/?api=1&query=Endere%C3%A7o+da+Unidade+2" target="_blank" rel="noopener" class="footer__local-btn">
+            <a href="https://www.google.com.br/maps/place/Econ%C3%B4mico+Meio+a+Meio+-+Jurunas/@-1.4689453,-48.4889145,3a,75y,131.2h,89.34t/data=!3m7!1e1!3m5!1s5pJQxER0ljnb4aPaTvqeig!2e0!6shttps:%2F%2Fstreetviewpixels-pa.clients6.google.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D0.6570822609360789%26panoid%3D5pJQxER0ljnb4aPaTvqeig%26yaw%3D131.2041896978825!7i16384!8i8192!4m6!3m5!1s0x92a48f88a18f4d73:0x1b26169153a2cfd5!8m2!3d-1.4692978!4d-48.4882418!16s%2Fg%2F11fl78zpz4?hl=pt-BR&entry=ttu&g_ep=EgoyMDI2MDcyMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" class="footer__local-btn">
               <ion-icon name="navigate"></ion-icon>
               Ver no mapa
             </a>
