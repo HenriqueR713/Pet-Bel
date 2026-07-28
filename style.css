@@ -230,7 +230,7 @@ body {
    Precisa de um seletor com especificidade MAIOR que o nth-child acima
    (que conta como 2 classes) — por isso o .links-rapidos__wrap na frente. */
 .links-rapidos__wrap .links-rapidos__item--avaliacao { background-color: var(--pink); --step-color: #c40f5e; }
-.links-rapidos__wrap .links-rapidos__item--novo      { background-color: var(--yellow-primaria); --step-color: #c9c200; }
+.links-rapidos__wrap .links-rapidos__item--whatsapp  { background-color: var(--yellow-primaria); --step-color: #c9c200; }
 
 /* ---------- Ícone grande de fundo, cortado pela metade na lateral direita ---------- */
 .links-rapidos__icone-fundo {
@@ -274,10 +274,13 @@ body {
    por isso aparecia com uma cor diferente do Canal Pet Bel. Usando a
    mesma pata e a mesma cor (--yellow-secundaria), já que o fundo do
    card também é --yellow-primaria, igual ao Canal Pet Bel. */
-.links-rapidos__item--novo .links-rapidos__icone-fundo {
-  -webkit-mask-image: url('assets/imagens/SVG/Pata.svg');
-  mask-image: url('assets/imagens/SVG/Pata.svg');
+.links-rapidos__item--whatsapp .links-rapidos__icone-fundo {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M17.6 6.32A7.85 7.85 0 0 0 12.02 4c-4.35 0-7.88 3.53-7.88 7.88 0 1.39.36 2.74 1.05 3.93L4 20l4.32-1.13a7.9 7.9 0 0 0 3.7.94h.01c4.35 0 7.88-3.53 7.88-7.88 0-2.1-.82-4.08-2.31-5.56zm-5.58 12.12h-.01a6.55 6.55 0 0 1-3.34-.92l-.24-.14-2.48.65.66-2.42-.16-.25a6.56 6.56 0 0 1-1.01-3.5c0-3.63 2.96-6.58 6.6-6.58a6.55 6.55 0 0 1 4.66 1.93 6.53 6.53 0 0 1 1.93 4.65c0 3.63-2.96 6.58-6.6 6.58zm3.61-4.93c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.44.1-.13.2-.5.64-.62.78-.11.13-.23.15-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.1.2-.23.3-.35.1-.11.13-.2.2-.33.07-.13.03-.25-.02-.35-.05-.1-.44-1.06-.6-1.45-.16-.38-.32-.33-.44-.34h-.38c-.13 0-.34.05-.52.25-.18.2-.68.66-.68 1.62 0 .95.7 1.87.79 2 .1.13 1.38 2.11 3.35 2.96.47.2.83.32 1.12.41.47.15.9.13 1.24.08.38-.06 1.17-.48 1.33-.94.16-.46.16-.85.11-.94-.05-.09-.18-.14-.38-.24z'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M17.6 6.32A7.85 7.85 0 0 0 12.02 4c-4.35 0-7.88 3.53-7.88 7.88 0 1.39.36 2.74 1.05 3.93L4 20l4.32-1.13a7.9 7.9 0 0 0 3.7.94h.01c4.35 0 7.88-3.53 7.88-7.88 0-2.1-.82-4.08-2.31-5.56zm-5.58 12.12h-.01a6.55 6.55 0 0 1-3.34-.92l-.24-.14-2.48.65.66-2.42-.16-.25a6.56 6.56 0 0 1-1.01-3.5c0-3.63 2.96-6.58 6.6-6.58a6.55 6.55 0 0 1 4.66 1.93 6.53 6.53 0 0 1 1.93 4.65c0 3.63-2.96 6.58-6.6 6.58zm3.61-4.93c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.44.1-.13.2-.5.64-.62.78-.11.13-.23.15-.42.05-.2-.1-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.36-.11-.2-.01-.3.09-.4.09-.1.2-.23.3-.35.1-.11.13-.2.2-.33.07-.13.03-.25-.02-.35-.05-.1-.44-1.06-.6-1.45-.16-.38-.32-.33-.44-.34h-.38c-.13 0-.34.05-.52.25-.18.2-.68.66-.68 1.62 0 .95.7 1.87.79 2 .1.13 1.38 2.11 3.35 2.96.47.2.83.32 1.12.41.47.15.9.13 1.24.08.38-.06 1.17-.48 1.33-.94.16-.46.16-.85.11-.94-.05-.09-.18-.14-.38-.24z'/%3E%3C/svg%3E");
   background-color: var(--yellow-secundaria);
+
+  width: 140%;
+  right: -55%;
 }
 
 .links-rapidos__titulo {
@@ -332,8 +335,8 @@ body {
   color: var(--yellow-primaria);
 }
 
-.links-rapidos__item--novo .links-rapidos__titulo,
-.links-rapidos__item--novo .links-rapidos__desc {
+.links-rapidos__item--whatsapp .links-rapidos__titulo,
+.links-rapidos__item--whatsapp .links-rapidos__desc {
   color: var(--pink);
 }
 
@@ -987,10 +990,19 @@ body {
 }
 
 .banho-tosa__foto img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.banho-tosa__foto img.is-ativo {
+  opacity: 1;
+  position: relative; /* mantém o fluxo enquanto for a única visível, evita "pulo" no primeiro load */
 }
 
 /* ---------- Responsivo ---------- */
@@ -1210,10 +1222,19 @@ body {
 }
 
 .clinica__foto img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.clinica__foto img.is-ativo {
+  opacity: 1;
+  position: relative; /* mantém o fluxo enquanto for a única visível, evita "pulo" no primeiro load */
 }
 
 /* ---------- Responsivo ---------- */

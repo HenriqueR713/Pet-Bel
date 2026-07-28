@@ -50,10 +50,10 @@
         <span class="links-rapidos__desc">Sua avaliação nos ajuda a chegar em mais tutores como você.</span>
       </a>
 
-      <a class="links-rapidos__item links-rapidos__item--novo" href="#">
-        <span class="links-rapidos__icone-fundo" aria-hidden="true"></span>
-        <span class="links-rapidos__titulo">Em breve</span>
-        <span class="links-rapidos__desc">Uma novidade chegando pra você e seu pet.</span>
+      <a class="links-rapidos__item links-rapidos__item--whatsapp" href="https://api.whatsapp.com/message/AJQNSEDI7HJLD1?autoload=1&app_absent=0" target="_blank">
+      <span class="links-rapidos__icone-fundo" aria-hidden="true"></span>
+      <span class="links-rapidos__titulo">WhatsApp</span>
+      <span class="links-rapidos__desc">Clique aqui e fale com a gente direto pelo WhatsApp.</span>
       </a>
 
     </div>
@@ -136,19 +136,16 @@
           <li class="banho-tosa__item">Tosas higiênicas</li>
         </ul>
 
-        <div class="banho-tosa__acoes">
-          <a href="#" class="banho-tosa__btn-local" aria-label="Ver localização">
-            <ion-icon name="location"></ion-icon>
-          </a>
-          <a href="#" class="banho-tosa__btn-agendar">Agende aqui</a>
-        </div>
+        
       </div>
 
-      <div class="banho-tosa__imagem">
-        <div class="banho-tosa__foto">
-          <img src="assets/imagens/imagem-sessoes/img_14.jpg" alt="Cachorro tomando banho">
-        </div>
-      </div>
+     <div class="banho-tosa__imagem">
+  <div class="banho-tosa__foto" id="banhoTosaSlider">
+    <!-- Os slides (<img>) são gerados dinamicamente via JS (ver script.js),
+         a partir do array `imagensBanhoTosa`. Pra adicionar/remover uma
+         foto, mexa só nesse array. -->
+  </div>
+</div>
 
     </div>
   </section>
@@ -189,11 +186,13 @@
       </ul>
     </div>
 
-    <div class="clinica__imagem">
-      <div class="clinica__foto">
-        <img src="assets/imagens/imagem-sessoes/img_02.jpg" alt="Atendimento clínico veterinário">
+        <div class="clinica__imagem">
+        <div class="clinica__foto" id="clinicaSlider">
+          <!-- Os slides (<img>) são gerados dinamicamente via JS (ver script.js),
+              a partir do array `imagensClinica`. Pra adicionar/remover uma
+              foto, mexa só nesse array. -->
+        </div>
       </div>
-    </div>
 
   </div>
 </section>

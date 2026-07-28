@@ -4,9 +4,12 @@
 // 2) Reveal em cascata ao rolar (banho-tosa, clinica, pet-shop, historia, etc.)
 // 3) Esmaecimento dinâmico do texto de "Nossa História"
 // 4) Carrossel + Lightbox da seção Dias Promocionais
+// 5) Slideshow automático — Banho e Tosa
 // ==========================================================================
 
 // ---------- 1) Geração das bolhas decorativas ----------
+
+
 (function () {
   const container = document.querySelector('.banho-tosa__circulos');
   if (!container) return;
@@ -259,4 +262,80 @@
 
   // posição inicial
   irParaIndice(0);
+})();
+
+// ---------- 5) Slideshow automático — Banho e Tosa ----------
+// Pra adicionar/remover uma foto do slider, mexa só no array abaixo.
+// Todas as imagens ficam em assets/imagens/imagem-sessoes/.
+(function () {
+  const imagensBanhoTosa = [
+    'assets/imagens/imagem-sessoes/img_14.jpg',
+    'assets/imagens/imagem-sessoes/img_15.jpg',
+    'assets/imagens/imagem-sessoes/img_16.jpg',
+     'assets/imagens/imagem-sessoes/img_09.jpg',
+      'assets/imagens/imagem-sessoes/img_11.jpeg',
+
+  ];
+
+  const TEMPO_POR_FOTO = 5000; // 3 segundos — ajuste aqui se quiser
+
+  const container = document.getElementById('banhoTosaSlider');
+  if (!container) return;
+
+  imagensBanhoTosa.forEach((src, i) => {
+    const img = document.createElement('img');
+    img.src = src;
+    img.alt = 'Pet no banho e tosa Pet Bel';
+    img.loading = i === 0 ? 'eager' : 'lazy';
+    if (i === 0) img.classList.add('is-ativo');
+    container.appendChild(img);
+  });
+
+  const slides = container.querySelectorAll('img');
+  if (slides.length <= 1) return; // só uma foto = não precisa trocar
+
+  let atual = 0;
+  setInterval(() => {
+    slides[atual].classList.remove('is-ativo');
+    atual = (atual + 1) % slides.length;
+    slides[atual].classList.add('is-ativo');
+  }, TEMPO_POR_FOTO);
+
+  // ---------- 6) Slideshow automático — Clínica ----------
+// Pra adicionar/remover uma foto do slider, mexa só no array abaixo.
+// Todas as imagens ficam em assets/imagens/imagem-sessoes/.
+(function () {
+  const imagensClinica = [
+    'assets/imagens/imagem-sessoes/img_02.jpg',
+    'assets/imagens/imagem-sessoes/img_03.jpg',
+    'assets/imagens/imagem-sessoes/img_04.jpeg',
+    'assets/imagens/imagem-sessoes/img_06.jpg',
+    // adicione aqui outras fotos da clínica, ex:
+    // 'assets/imagens/imagem-sessoes/img_XX.jpg',
+  ];
+
+  const TEMPO_POR_FOTO = 5000; // 5 segundos — ajuste aqui se quiser
+
+  const container = document.getElementById('clinicaSlider');
+  if (!container) return;
+
+  imagensClinica.forEach((src, i) => {
+    const img = document.createElement('img');
+    img.src = src;
+    img.alt = 'Atendimento clínico veterinário Pet Bel';
+    img.loading = i === 0 ? 'eager' : 'lazy';
+    if (i === 0) img.classList.add('is-ativo');
+    container.appendChild(img);
+  });
+
+  const slides = container.querySelectorAll('img');
+  if (slides.length <= 1) return; // só uma foto = não precisa trocar
+
+  let atual = 0;
+  setInterval(() => {
+    slides[atual].classList.remove('is-ativo');
+    atual = (atual + 1) % slides.length;
+    slides[atual].classList.add('is-ativo');
+  }, TEMPO_POR_FOTO);
+})();
 })();
