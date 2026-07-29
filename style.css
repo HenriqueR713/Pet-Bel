@@ -28,6 +28,7 @@
 
 html, body {
   height: 100%;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -48,11 +49,14 @@ body {
   --espaco-secao: 84px;
   --espaco-secao-mobile: 64px;
 
-  /* Cores dos cards de links rápidos (ciclam a cada 4 itens) */
   --link-azul: #4C6FD4;
   --link-rosa: #F06BA6;
   --link-amarelo: #F2B705;
   --link-vermelho: #F0483E;
+
+  /* NOVO: largura fluida das seções.
+     Mínimo 1130px, cresce até 92% da tela, mas nunca passa de 1400px. */
+  --secao-max-width: clamp(1130px, 92vw, 1400px);
 }
 
 /* ==========================================================================
@@ -184,13 +188,31 @@ body {
   margin: 0 auto;
 }
 
+/* A partir daqui os 4 cards ficam lado a lado, aproveitando o espaço */
+@media (min-width: 700px) {
+  .links-rapidos__wrap {
+    grid-template-columns: repeat(4, 1fr);
+    max-width: var(--secao-max-width);
+    gap: 20px;
+  }
+
+    .links-rapidos__item--avaliacao {
+    order: 4;
+  }
+
+  .links-rapidos__item--whatsapp {
+    order: 3;
+  }
+  
+}
+
 .links-rapidos__item {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  aspect-ratio: 4 / 5.5;
+  aspect-ratio: 3 / 4;
   box-sizing: border-box;
   position: relative;
   overflow: hidden;
@@ -1801,8 +1823,8 @@ body {
 .footer {
   position: relative;
   width: 100%;
-  max-width: 1130px;
-  margin: var(--espaco-secao) auto 0;
+  max-width: none;           /* remove o limite de 1130px */
+  margin: var(--espaco-secao) 0 0;   /* sem auto, já que não precisa mais centralizar */
   padding: 56px 6% 28px;
   background-color: var(--pink);
   border-top: 4px solid var(--yellow-primaria);
@@ -1815,6 +1837,9 @@ body {
 @media (max-width: 700px) {
   .footer {
     margin-top: var(--espaco-secao-mobile);
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
     padding: 40px 18px 20px;
   }
 }
@@ -1969,7 +1994,8 @@ body {
 }
 
 .footer__tagline {
-  font-size: 13px;
+  font-size: 14.5px;
+  font-weight: 500;
   line-height: 1.5;
   color: rgba(255, 255, 255, 0.85);
   max-width: 240px;
@@ -1996,9 +2022,10 @@ body {
 }
 
 .footer__lista li {
-  font-size: 14px;
+  font-size: 15.5px;
+  font-weight: 500;
   color: rgba(255, 255, 255, 0.9);
-  line-height: 1.4;
+  line-height: 1.5;
 }
 
 .footer__lista li strong {
@@ -2032,7 +2059,7 @@ body {
 }
 
 .footer__horario-servico {
-  font-size: 12.5px;
+  font-size: 13.5px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.02em;
@@ -2063,15 +2090,16 @@ body {
 }
 
 .footer__local-nome {
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 700;
   color: #fff;
 }
 
 .footer__local-endereco {
-  font-size: 12.5px;
-  line-height: 1.55;
-  color: rgba(255, 255, 255, 0.75);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
   margin: 0;
 }
 
@@ -2172,8 +2200,9 @@ body {
   text-align: center;
   gap: 16px;
   padding-top: 24px;
-  font-size: 13px;
-  color: rgba(255, 255, 255, 0.85);
+  font-size: 14px;
+   font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .footer__direitos {
@@ -2193,7 +2222,7 @@ body {
 .footer__dev {
   margin: 0;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   gap: 10px;
 }
@@ -2203,7 +2232,8 @@ body {
    autorais à esquerda, "Desenvolvido por" + botão à direita (a linha
    divisória alinhada ao centro some, já que os dois blocos ficam
    lado a lado). */
-@media (min-width: 560px) {
+
+/* @media (min-width: 560px) {
   .footer__base {
     flex-direction: row;
     flex-wrap: wrap;
@@ -2228,7 +2258,7 @@ body {
     gap: 12px;
     flex: 0 0 auto;
   }
-}
+}  */ 
 
 /* Badge/botão com o nome do desenvolvedor, no estilo da referência:
    fundo amarelo, texto escuro, ícone "</>" à esquerda e ícone de
