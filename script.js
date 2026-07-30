@@ -338,4 +338,42 @@
     slides[atual].classList.add('is-ativo');
   }, TEMPO_POR_FOTO);
 })();
+
+// ---------- 7) Slideshow automático — Nossa História ----------
+  // Pra adicionar/remover uma foto do slider, mexa só no array abaixo.
+  // Todas as imagens ficam em assets/imagens/imagem-sessoes/.
+  (function () {
+    const imagensHistoria = [
+      'assets/imagens/imagem-sessoes/img_17.jpeg',
+      'assets/imagens/imagem-sessoes/img_19.jpeg',
+      'assets/imagens/imagem-sessoes/img_20.jpeg',
+      'assets/imagens/imagem-sessoes/img_21.jpeg',
+      // adicione aqui outras fotos da história, ex:
+      // 'assets/imagens/imagem-sessoes/img_XX.jpg',
+    ];
+
+    const TEMPO_POR_FOTO = 5000; // 5 segundos — ajuste aqui se quiser
+
+    const container = document.getElementById('historiaSlider');
+    if (!container) return;
+
+    imagensHistoria.forEach((src, i) => {
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = 'Momento da história do Pet Bel';
+      img.loading = i === 0 ? 'eager' : 'lazy';
+      if (i === 0) img.classList.add('is-ativo');
+      container.appendChild(img);
+    });
+
+    const slides = container.querySelectorAll('img');
+    if (slides.length <= 1) return; // só uma foto = não precisa trocar
+
+    let atual = 0;
+    setInterval(() => {
+      slides[atual].classList.remove('is-ativo');
+      atual = (atual + 1) % slides.length;
+      slides[atual].classList.add('is-ativo');
+    }, TEMPO_POR_FOTO);
+  })();
 })();

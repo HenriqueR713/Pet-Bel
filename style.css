@@ -1767,10 +1767,19 @@ body {
 }
 
 .historia__foto img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.historia__foto img.is-ativo {
+  opacity: 1;
+  position: relative; /* mantém o fluxo enquanto for a única visível, evita "pulo" no primeiro load */
 }
 
 /* ---------- Responsivo ---------- */
