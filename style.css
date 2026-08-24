@@ -1935,6 +1935,81 @@ body {
   }
 }
 
+/* ---------- Recrutamento ---------- */
+.footer__recrutamento {
+  position: relative;
+  z-index: 2;
+  background-color: rgba(255, 255, 255, 0.12);
+  border: 2px solid var(--yellow-primaria);
+  border-radius: 20px;
+  padding: 32px 24px;
+  text-align: center;
+  margin-bottom: 40px;
+  backdrop-filter: blur(10px);
+}
+
+.footer__recrutamento-titulo {
+  font-family: 'Fredoka', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: clamp(20px, 5cqw, 28px);
+  color: var(--yellow-primaria);
+  margin: 0 0 8px;
+  line-height: 1.3;
+}
+
+.footer__recrutamento-texto {
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  margin: 0 0 18px;
+}
+
+.footer__recrutamento-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  border-radius: 999px;
+  background-color: var(--yellow-primaria);
+  color: #1a1a1a;
+  font-family: 'Fredoka', system-ui, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  font-size: 14px;
+  text-decoration: none;
+  box-shadow: 0 6px 0 #c9a300, 0 9px 16px rgba(0, 0, 0, 0.25);
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.footer__recrutamento-btn ion-icon {
+  font-size: 18px;
+  pointer-events: none;
+}
+
+.footer__recrutamento-btn:hover {
+  background-color: var(--yellow-secundaria);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 0 #c9a300, 0 11px 18px rgba(0, 0, 0, 0.3);
+}
+
+.footer__recrutamento-btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 3px 0 #c9a300, 0 5px 10px rgba(0, 0, 0, 0.25);
+}
+
+@media (max-width: 700px) {
+  .footer__recrutamento {
+    margin-bottom: 32px;
+    padding: 24px 18px;
+  }
+
+  .footer__recrutamento-btn {
+    padding: 11px 24px;
+    font-size: 13px;
+  }
+}
+
 /* Grid fluido: em vez de breakpoints fixos (que deixavam as colunas
    espremidas em larguras "de PC" intermediárias), cada bloco tem uma
    largura mínima e o grid decide sozinho quantas colunas cabem por
